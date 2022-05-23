@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- New default colors -->
+  <color name="lightPurple">#FCFFF5</color>
+  <color name="primaryColor">#A6CE39</color>
+</resources>
