@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "11111111111111",
+    "project_id": "lgpd-jus",
+    "storage_bucket": "lgpd-jus.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:11111111111111:android:86eb9b00cc0b5b88ae1201",
+        "android_client_info": {
+          "package_name": "br.com.jusbrasil.lgpd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "11111111111111-yyyyyyyyyyyyyyyyyyyy.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "11111111111111-yyyyyyyyyyyyyyyyyyyy.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:11111111111111:android:otherrand",
+        "android_client_info": {
+          "package_name": "br.com.jusbrasil.lgpd.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "11111111111111-yyyyyyyyyyyyyyyyyyyy.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "randrand"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "11111111111111-yyyyyyyyyyyyyyyyyyyy.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
