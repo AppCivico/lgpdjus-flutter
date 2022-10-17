@@ -54,3 +54,7 @@ assets/config/env
 # Coverage
 coverage/
 ios/certificates
+
+# Google Services
+google-services.json
+GoogleService-Info.plist
