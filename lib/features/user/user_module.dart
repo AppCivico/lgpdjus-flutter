@@ -11,7 +11,7 @@ import 'package:lgpdjus/features/user/account/domain/user_account_usecase.dart';
 class AccountModule extends Module with FeatureModule {
   @override
   List<Bind<Object>> get domainBinds => [
-        Bind.lazySingleton((i) => GetAccountUseCase(i())),
+        Bind.lazySingleton<GetAccountUseCase>((i) => GetAccountUseCase(i())),
       ];
 
   @override
@@ -19,7 +19,7 @@ class AccountModule extends Module with FeatureModule {
         Bind.factory<AccountRepository>(
           (i) => AccountRepositoryImpl(i(), i(), i()),
         ),
-        Bind.factory(
+        Bind.factory<AccountLocalDataSource>(
           (i) => AccountLocalDataSourceImpl(i(), i(), i()),
         ),
         Bind.factory<AccountRemoteDataSource>(
