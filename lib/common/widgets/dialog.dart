@@ -1,5 +1,4 @@
 import 'package:asuka/asuka.dart' as asuka;
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lgpdjus/app/core/extension/iterable.dart';
 import 'package:lgpdjus/common/domain/titles/entity.dart';
