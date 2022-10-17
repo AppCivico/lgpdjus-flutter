@@ -20,12 +20,12 @@ def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
     throw new GradleException("versionName not found. Define flutter.versionName in the local.properties file.")
 }
-def keystorePropertiesFile = rootProject.file("secrets.properties")
-if (!keystorePropertiesFile.exists()) {
-    keystorePropertiesFile = rootProject.file("secrets.defaults.properties")
+def secretsPropertiesFile = rootProject.file("secrets.properties")
+if (!secretsPropertiesFile.exists()) {
+    secretsPropertiesFile = rootProject.file("secrets.defaults.properties")
 }
-def keystoreProperties = new Properties()
-keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+def secretsProperties = new Properties()
+secretsProperties.load(new FileInputStream(secretsPropertiesFile))
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
