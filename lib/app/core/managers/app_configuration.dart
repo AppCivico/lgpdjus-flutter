@@ -27,14 +27,11 @@ abstract class IAppConfiguration {
 
 class AppConfiguration implements IAppConfiguration {
   AppConfiguration({
-    required Config config,
     required ILocalStorage storage,
     required AuthenticationSubject authenticationSubject,
-  })  : this._config = config,
-        this._storage = storage,
+  })  : this._storage = storage,
         this._authenticationSubject = authenticationSubject;
 
-  final Config _config;
   final ILocalStorage _storage;
   final AuthenticationSubject _authenticationSubject;
 
@@ -44,7 +41,7 @@ class AppConfiguration implements IAppConfiguration {
       'br.com.jusbrasil.lgpd.hasPendingLgpdTutorial';
 
   @override
-  late Uri apiBaseUri = Uri.parse(_config.apiBaseUrl);
+  late Uri apiBaseUri = Uri.parse(kApiBaseUrl);
 
   set _authorizationStatus(AuthorizationStatus status) {
     _authenticationSubject.add(status);

@@ -12,7 +12,6 @@ import 'package:lgpdjus/common/data/appstate/datasource.dart';
 import 'package:lgpdjus/common/data/file_provider.dart';
 import 'package:lgpdjus/common/di/widget_resolver.dart';
 import 'package:lgpdjus/common/navigation/action_handler.dart';
-import 'package:lgpdjus/core/config.dart';
 import 'package:lgpdjus/core/di/module.dart' as di;
 import 'package:lgpdjus/core/provider/file_provider.dart';
 import 'package:lgpdjus/core/router/permission_guard.dart';
@@ -39,11 +38,6 @@ import 'features/authentication/presentation/sign_in/terms_of_use/terms_of_use_p
 import 'features/main_menu/domain/repositories/user_profile_repository.dart';
 
 class AppModule extends di.Module {
-  AppModule(Config config)
-      : this._config = config,
-        super();
-
-  final Config _config;
   final _authenticationStream = AuthenticationStream();
 
   @override
@@ -53,7 +47,6 @@ class AppModule extends di.Module {
 
   @override
   late final List<Bind> binds = [
-    Bind.instance<Config>(_config),
     Bind.instance<AuthenticationObserver>(_authenticationStream),
     Bind.instance<AuthenticationSubject>(_authenticationStream),
     Bind.lazySingleton((i) => AppStateDataSource(i(), i())),
@@ -97,7 +90,6 @@ class AppModule extends di.Module {
         )),
     Bind<IAppConfiguration>(
       (i) => AppConfiguration(
-        config: i.get(),
         storage: i.get(),
         authenticationSubject: i.get(),
       ),

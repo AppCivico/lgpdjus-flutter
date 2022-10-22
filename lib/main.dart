@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:lgpdjus/app/app_module.dart';
 import 'package:lgpdjus/app/app_widget.dart';
-import 'package:lgpdjus/core/config.dart';
 
 const _kTestingCrashlytics = false;
 
@@ -23,10 +22,9 @@ void main() async {
   EquatableConfig.stringify = true;
 
   runZonedGuarded(() async {
-    final config = await Config.load();
     runApp(
       ModularApp(
-        module: AppModule(config),
+        module: AppModule(),
         child: AppWidget(),
         // notAllowedParentBinds: true,
       ),
