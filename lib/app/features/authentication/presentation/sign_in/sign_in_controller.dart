@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:lgpdjus/app/features/appstate/domain/usecases/app_state_usecase.dart';
@@ -5,6 +6,7 @@ import 'package:lgpdjus/app/features/authentication/domain/entities/session_enti
 import 'package:lgpdjus/app/features/authentication/domain/repositories/i_authentication_repository.dart';
 import 'package:lgpdjus/app/features/authentication/presentation/shared/map_failure_message.dart';
 import 'package:lgpdjus/app/features/authentication/presentation/shared/page_progress_indicator.dart';
+import 'package:lgpdjus/app/shared/design_system/colors.dart';
 import 'package:lgpdjus/app/shared/logger/log.dart';
 import 'package:lgpdjus/app/shared/navigation/navigator.dart';
 import 'package:mobx/mobx.dart';
@@ -74,15 +76,19 @@ abstract class _SignInControllerBase with Store, MapFailureMessage {
   }
 }
 
+// TODO: move it to page/view
 Future<void> _launchURL(String url) async {
   try {
     await launch(
       url,
       customTabsOption: CustomTabsOption(
+        toolbarColor: DesignSystemColors.blueGov,
         enableUrlBarHiding: true,
         showPageTitle: true,
       ),
       safariVCOption: SafariViewControllerOption(
+        preferredBarTintColor: DesignSystemColors.blueGov,
+        preferredControlTintColor: Colors.white,
         barCollapsingEnabled: true,
         entersReaderIfAvailable: false,
         dismissButtonStyle: SafariViewControllerDismissButtonStyle.close,

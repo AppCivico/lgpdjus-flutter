@@ -25,7 +25,7 @@ class _LoginButtonState extends State<LoginButton> {
         child: RaisedButton(
           onPressed: widget.onChanged,
           elevation: 0,
-          color: DesignSystemColors.blue2,
+          color: DesignSystemColors.blueGov,
           child: RichText(
             text: TextSpan(
               style: TextStyle(

@@ -9,6 +9,7 @@ class DesignSystemColors {
   // TODO: Fix color names bellow
   static const blue1 = main;
   static const blue2 = Color.fromRGBO(48, 120, 222, 1);
+  static const blueGov = Color.fromRGBO(19, 81, 180, 1);
   static const blueHomeGradient = Color.fromRGBO(48, 100, 200, 1);
   static const darkIndigo = Color.fromRGBO(8, 8, 40, 1);
   static const textLink = Color(0xBF3C3C3B);
