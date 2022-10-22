@@ -10,7 +10,6 @@ class Config {
 
   final Map<String, String> _env;
   late final String apiBaseUrl = _env["API_BASE_URL"]!;
-  late final Login user = Login(_env['USER'], _env['PASS']);
 
   static Future<Config> load() async {
     if (!kDebugMode) return Config(_defaults);
@@ -22,11 +21,4 @@ class Config {
         .then((e) => {..._defaults, ...e})
         .then((e) => Config(e));
   }
-}
-
-class Login {
-  Login(this.user, this.password);
-
-  final String? user;
-  final String? password;
 }

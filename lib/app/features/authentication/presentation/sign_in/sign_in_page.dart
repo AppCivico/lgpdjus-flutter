@@ -1,16 +1,13 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lgpdjus/app/features/authentication/presentation/shared/input_box_style.dart';
 import 'package:lgpdjus/app/features/authentication/presentation/shared/login_button.dart';
 import 'package:lgpdjus/app/features/authentication/presentation/shared/page_progress_indicator.dart';
-import 'package:lgpdjus/app/features/authentication/presentation/shared/password_text_input.dart';
-import 'package:lgpdjus/app/features/authentication/presentation/shared/single_text_input.dart';
 import 'package:lgpdjus/app/features/authentication/presentation/shared/snack_bar_handler.dart';
 import 'package:lgpdjus/app/shared/design_system/linear_gradient_design_system.dart';
-import 'package:lgpdjus/app/shared/design_system/link_button.dart';
+import 'package:lgpdjus/app/shared/design_system/text_styles.dart';
+import 'package:lgpdjus/app/shared/navigation/navigator.dart';
 import 'package:lgpdjus/app/shared/widgets/appbar/appbar.dart';
 import 'package:mobx/mobx.dart';
 
@@ -48,6 +45,7 @@ class _SignInPageState extends ModularState<SignInPage, SignInController>
 
   @override
   Widget build(BuildContext context) {
+    print(_currentState);
     return SizedBox.expand(
       child: Container(
         decoration: kLinearGradientDesignSystem,
@@ -59,39 +57,67 @@ class _SignInPageState extends ModularState<SignInPage, SignInController>
           ),
           body: PageProgressIndicator(
             progressState: _currentState,
-            child: GestureDetector(
-              onTap: () => _handleTap(context),
-              onPanDown: (_) => _handleTap(context),
-              child: SafeArea(
-                child: SingleChildScrollView(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      Center(
-                        child: SizedBox(
-                          width: 200,
-                          height: 200,
-                          child: SvgPicture.asset(
-                            "assets/images/logo.svg",
-                          ),
+            child: SafeArea(
+              child: Container(
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    Center(
+                      child: SizedBox(
+                        width: 200,
+                        height: 200,
+                        child: SvgPicture.asset(
+                          "assets/images/logo.svg",
                         ),
                       ),
-                      Observer(builder: (_) => _buildUserField()),
-                      Observer(builder: (_) => _buildPasswordField()),
-                      _buildLoginButton(),
-                      SizedBox(height: 16.0),
-                      LinkButton(
-                        onPressed: controller.registerUserPressed,
-                        text: "Ainda não tem conta? Crie agora!",
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 16),
+                      child: RichText(
+                        text: TextSpan(
+                          text:
+                              'Abertura e acompanhamento de solicitações referentes a'
+                              ' nova legislação de proteção de dados pessoais (LGPD) '
+                              'referente ao Tribunal de Justiça de Santa Catarina.',
+                          style: Theme.of(context).textTheme.bodyText2,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      LinkButton(
-                        onPressed: controller.resetPasswordPressed,
-                        text: "Esqueci minha senha",
+                    ),
+                    Expanded(
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: LoginButton(
+                          onChanged: () async => controller.login(),
+                        ),
                       ),
-                    ],
-                  ),
+                    ),
+                    Flexible(
+                      child: RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                          style: Theme.of(context).textTheme.bodyText2,
+                          children: [
+                            TextSpan(
+                              text: 'Ao entrar, você concorda com nosso\n',
+                            ),
+                            TextSpan(
+                              text: 'termo de privacidade',
+                              style: kTextStyleFeedTweetShowReply,
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  AppNavigator.launchUrl(
+                                    'https://lgpdjus-api.appcivico.com/web/politica-privacidade',
+                                  );
+                                },
+                            ),
+                            TextSpan(text: '.'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -105,47 +131,5 @@ class _SignInPageState extends ModularState<SignInPage, SignInController>
   void dispose() {
     _disposers?.forEach((d) => d());
     super.dispose();
-  }
-
-  Widget _buildUserField() {
-    return Padding(
-      padding: EdgeInsets.only(top: 16),
-      child: SingleTextInput(
-        value: controller.login.user,
-        keyboardType: TextInputType.emailAddress,
-        onChanged: controller.setEmail,
-        boxDecoration: WhiteBoxDecorationStyle(
-          labelText: 'E-mail',
-          errorText: controller.warningEmail,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildPasswordField() {
-    return Padding(
-      padding: EdgeInsets.only(top: 24),
-      child: PasswordInputField(
-        labelText: 'Senha',
-        value: controller.login.password,
-        errorText: controller.warningPassword,
-        onChanged: controller.setPassword,
-      ),
-    );
-  }
-
-  Widget _buildLoginButton() {
-    return Padding(
-      padding: EdgeInsets.only(top: 24.0),
-      child: LoginButton(
-        onChanged: () async => controller.signInWithEmailAndPasswordPressed(),
-      ),
-    );
-  }
-
-  _handleTap(BuildContext context) {
-    if (MediaQuery.of(context).viewInsets.bottom > 0)
-      SystemChannels.textInput.invokeMethod('TextInput.hide');
-    WidgetsBinding.instance?.focusManager.primaryFocus?.unfocus();
   }
 }

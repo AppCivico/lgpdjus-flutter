@@ -21,16 +21,26 @@ class _LoginButtonState extends State<LoginButton> {
     return Container(
       child: SizedBox(
         height: 44,
+        width: double.infinity,
         child: RaisedButton(
           onPressed: widget.onChanged,
           elevation: 0,
-          color: DesignSystemColors.doJus,
-          child: Text(
-            'Entrar',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-              fontSize: 18.0,
+          color: DesignSystemColors.blue2,
+          child: RichText(
+            text: TextSpan(
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.0,
+              ),
+              children: [
+                TextSpan(text: 'Entrar com '),
+                TextSpan(
+                  text: 'gov.br',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
           ),
           shape: RoundedRectangleBorder(

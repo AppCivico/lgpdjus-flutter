@@ -33,38 +33,6 @@ mixin _$SignInController on _SignInControllerBase, Store {
     });
   }
 
-  late final _$warningEmailAtom =
-      Atom(name: '_SignInControllerBase.warningEmail', context: context);
-
-  @override
-  String get warningEmail {
-    _$warningEmailAtom.reportRead();
-    return super.warningEmail;
-  }
-
-  @override
-  set warningEmail(String value) {
-    _$warningEmailAtom.reportWrite(value, super.warningEmail, () {
-      super.warningEmail = value;
-    });
-  }
-
-  late final _$warningPasswordAtom =
-      Atom(name: '_SignInControllerBase.warningPassword', context: context);
-
-  @override
-  String get warningPassword {
-    _$warningPasswordAtom.reportRead();
-    return super.warningPassword;
-  }
-
-  @override
-  set warningPassword(String value) {
-    _$warningPasswordAtom.reportWrite(value, super.warningPassword, () {
-      super.warningPassword = value;
-    });
-  }
-
   late final _$errorMessageAtom =
       Atom(name: '_SignInControllerBase.errorMessage', context: context);
 
@@ -81,66 +49,17 @@ mixin _$SignInController on _SignInControllerBase, Store {
     });
   }
 
-  late final _$signInWithEmailAndPasswordPressedAsyncAction = AsyncAction(
-      '_SignInControllerBase.signInWithEmailAndPasswordPressed',
-      context: context);
+  late final _$loginAsyncAction =
+      AsyncAction('_SignInControllerBase.login', context: context);
 
   @override
-  Future<void> signInWithEmailAndPasswordPressed() {
-    return _$signInWithEmailAndPasswordPressedAsyncAction
-        .run(() => super.signInWithEmailAndPasswordPressed());
-  }
-
-  late final _$registerUserPressedAsyncAction = AsyncAction(
-      '_SignInControllerBase.registerUserPressed',
-      context: context);
-
-  @override
-  Future<void> registerUserPressed() {
-    return _$registerUserPressedAsyncAction
-        .run(() => super.registerUserPressed());
-  }
-
-  late final _$resetPasswordPressedAsyncAction = AsyncAction(
-      '_SignInControllerBase.resetPasswordPressed',
-      context: context);
-
-  @override
-  Future<void> resetPasswordPressed() {
-    return _$resetPasswordPressedAsyncAction
-        .run(() => super.resetPasswordPressed());
-  }
-
-  late final _$_SignInControllerBaseActionController =
-      ActionController(name: '_SignInControllerBase', context: context);
-
-  @override
-  void setEmail(String address) {
-    final _$actionInfo = _$_SignInControllerBaseActionController.startAction(
-        name: '_SignInControllerBase.setEmail');
-    try {
-      return super.setEmail(address);
-    } finally {
-      _$_SignInControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setPassword(String password) {
-    final _$actionInfo = _$_SignInControllerBaseActionController.startAction(
-        name: '_SignInControllerBase.setPassword');
-    try {
-      return super.setPassword(password);
-    } finally {
-      _$_SignInControllerBaseActionController.endAction(_$actionInfo);
-    }
+  Future<void> login() {
+    return _$loginAsyncAction.run(() => super.login());
   }
 
   @override
   String toString() {
     return '''
-warningEmail: ${warningEmail},
-warningPassword: ${warningPassword},
 errorMessage: ${errorMessage},
 currentState: ${currentState}
     ''';

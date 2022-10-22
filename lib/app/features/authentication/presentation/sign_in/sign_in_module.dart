@@ -39,9 +39,7 @@ class SignInModule extends Module {
         Bind(
           (i) => SignInController(
             i.get<IAuthenticationRepository>(),
-            i.get<PasswordValidator>(),
             i.get<AppStateUseCase>(),
-            i(),
           ),
         ),
         ..._signUp,
@@ -106,7 +104,6 @@ class SignInModule extends Module {
         Bind<IAuthenticationDataSource>(
           (i) => AuthenticationDataSource(
             apiClient: i.get<http.Client>(),
-            serverConfiguration: i.get<IApiServerConfigure>(),
           ),
         ),
         Bind<IUserRegisterRepository>(
