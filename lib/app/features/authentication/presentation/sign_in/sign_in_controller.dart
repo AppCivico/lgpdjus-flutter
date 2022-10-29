@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_web_auth/flutter_web_auth.dart';
 import 'package:lgpdjus/app/features/appstate/domain/usecases/app_state_usecase.dart';
 import 'package:lgpdjus/app/features/authentication/domain/entities/session_entity.dart';
 import 'package:lgpdjus/app/features/authentication/domain/repositories/i_authentication_repository.dart';
@@ -54,10 +55,20 @@ abstract class _SignInControllerBase with Store, MapFailureMessage {
       repository
           .getLoginUrl()
           .then(_launchURL)
+          .then(_forwardToLogged)
           .catchError((error) => _setErrorMessage(error)),
     );
 
     await _progress;
+  }
+
+  Future<SessionEntity> _launchURL(String url) async {
+    await FlutterWebAuth.authenticate(
+      url: url,
+      callbackUrlScheme: "lgpdjus",
+    );
+
+    return await repository.authenticate();
   }
 
   Future<void> _forwardToLogged(SessionEntity session) async {
@@ -73,29 +84,5 @@ abstract class _SignInControllerBase with Store, MapFailureMessage {
 
   void _setErrorMessage(Object failure) {
     errorMessage = mapFailureMessage(failure);
-  }
-}
-
-// TODO: move it to page/view
-Future<void> _launchURL(String url) async {
-  try {
-    await launch(
-      url,
-      customTabsOption: CustomTabsOption(
-        toolbarColor: DesignSystemColors.blueGov,
-        enableUrlBarHiding: true,
-        showPageTitle: true,
-      ),
-      safariVCOption: SafariViewControllerOption(
-        preferredBarTintColor: DesignSystemColors.blueGov,
-        preferredControlTintColor: Colors.white,
-        barCollapsingEnabled: true,
-        entersReaderIfAvailable: false,
-        dismissButtonStyle: SafariViewControllerDismissButtonStyle.close,
-      ),
-    );
-  } catch (e, stack) {
-    // An exception is thrown if browser app is not installed on Android device.
-    error(e, stack);
   }
 }

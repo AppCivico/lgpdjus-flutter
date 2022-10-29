@@ -7,6 +7,8 @@ import 'package:lgpdjus/app/core/network/interceptor/interceptor.dart';
 import 'package:package_info/package_info.dart';
 
 class UserAgentInterceptor implements HttpInterceptor {
+  late Future<_ClientInfo> _clientInfo = _buildClientInfo();
+
   @override
   Future<StreamedResponse> intercept(
     BaseRequest request,
@@ -20,7 +22,7 @@ class UserAgentInterceptor implements HttpInterceptor {
     return next(request);
   }
 
-  Future<_ClientInfo> get _clientInfo async {
+  Future<_ClientInfo> _buildClientInfo() async {
     final deviceInfo = await _deviceInfo();
     final appInfo = await _appInfo();
 

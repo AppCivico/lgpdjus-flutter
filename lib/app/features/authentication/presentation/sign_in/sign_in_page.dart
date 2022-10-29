@@ -8,6 +8,7 @@ import 'package:lgpdjus/app/features/authentication/presentation/shared/snack_ba
 import 'package:lgpdjus/app/shared/design_system/linear_gradient_design_system.dart';
 import 'package:lgpdjus/app/shared/design_system/text_styles.dart';
 import 'package:lgpdjus/app/shared/navigation/navigator.dart';
+import 'package:lgpdjus/app/shared/navigation/route.dart';
 import 'package:lgpdjus/app/shared/widgets/appbar/appbar.dart';
 import 'package:mobx/mobx.dart';
 
@@ -107,8 +108,8 @@ class _SignInPageState extends ModularState<SignInPage, SignInController>
                               style: kTextStyleFeedTweetShowReply,
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
-                                  AppNavigator.launchUrl(
-                                    'https://lgpdjus-api.appcivico.com/web/politica-privacidade',
+                                  AppNavigator.push(
+                                    AppRoute('/privacy_policy'),
                                   );
                                 },
                             ),

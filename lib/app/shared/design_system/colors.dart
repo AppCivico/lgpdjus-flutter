@@ -1,4 +1,4 @@
-import 'dart:ui';
+import 'package:flutter/material.dart';
 
 class DesignSystemColors {
   static const main = Color.fromARGB(255, 166, 206, 57);
@@ -39,12 +39,12 @@ class DesignSystemColors {
   static const black = Color(0xFF3C3C3B);
 
   static Color hexColor(String value) {
-    value = value.toUpperCase().replaceAll("#", "");
-    if (value.length == 6) {
-      value = "FF" + value;
+    var hexColor = value.replaceFirst("#", "");
+    if (hexColor.length == 6) {
+      hexColor = "ff" + hexColor;
     }
+    final intColor = int.tryParse(hexColor, radix: 16);
 
-    final foo = Color(int.parse(value, radix: 16));
-    return foo;
+    return intColor != null ? Color(intColor) : Colors.transparent;
   }
 }

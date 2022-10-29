@@ -7,8 +7,11 @@ const String USER_DATA_KEY = 'br.com.jusbrasil.lgpd.userProfile';
 
 abstract class IAppConfiguration {
   Future<String?> get apiToken;
+  Future<String?> get authToken;
 
   Future<void> saveApiToken({required String? token});
+
+  Future<void> saveAuthToken(String? token);
 
   Future<void> logout();
 
@@ -36,6 +39,7 @@ class AppConfiguration implements IAppConfiguration {
   final AuthenticationSubject _authenticationSubject;
 
   final _tokenKey = 'br.com.jusbrasil.lgpd.tokenServer';
+  final _authTokenKey = 'br.com.jusbrasil.lgpd.authToken';
   final _isFirstRunKey = 'br.com.jusbrasil.lgpd.isFirstRun';
   final _hasPendingLgpdTutorialKey =
       'br.com.jusbrasil.lgpd.hasPendingLgpdTutorial';
@@ -51,6 +55,9 @@ class AppConfiguration implements IAppConfiguration {
   Future<String?> get apiToken {
     return _storage.get(_tokenKey);
   }
+
+  @override
+  Future<String?> get authToken => _storage.get(_authTokenKey);
 
   @override
   Future<bool> get isFirstRun {
@@ -89,6 +96,13 @@ class AppConfiguration implements IAppConfiguration {
     _authorizationStatus = token.isNotEmpty
         ? AuthorizationStatus.authenticated
         : AuthorizationStatus.anonymous;
+    return;
+  }
+
+  @override
+  Future<void> saveAuthToken(String? token) async {
+    token ??= "";
+    await _storage.put(_authTokenKey, token);
     return;
   }
 

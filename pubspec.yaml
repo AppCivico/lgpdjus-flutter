@@ -14,7 +14,7 @@ description: A new Flutter project.
 version: 1.2.3+49
 
 environment:
-  sdk: '>=2.13.0 <3.0.0'
+  sdk: '>=2.16.0 <3.0.0'
 
 publish_to: none
 
@@ -66,6 +66,7 @@ dependencies:
   async: ^2.6.1
   cross_file: ^0.3.1+1
   flutter_custom_tabs: ^1.0.4
+  flutter_web_auth: ^0.4.1
 
 dev_dependencies:
   flutter_test:
