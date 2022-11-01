@@ -9,8 +9,6 @@ import 'package:lgpdjus/app/features/authentication/presentation/shared/map_exce
 import 'package:lgpdjus/app/features/main_menu/data/model/account_preference_model.dart';
 
 abstract class IUserProfileRepository {
-  Future<Either<Failure, ValidField>> stealthMode({required bool toggle});
-  Future<Either<Failure, ValidField>> anonymousMode({required bool toggle});
   Future<Either<Failure, ValidField>> deleteNotice();
   Future<Either<Failure, ValidField>> reactivate({required String token});
   Future<Either<Failure, AccountPreferenceSessionModel>> preferences();
@@ -29,38 +27,6 @@ class UserProfileRepository implements IUserProfileRepository {
     required IApiServerConfigure serverConfiguration,
   })   : this._apiProvider = apiProvider,
         this._serverConfiguration = serverConfiguration;
-
-  @override
-  Future<Either<Failure, ValidField>> stealthMode(
-      {required bool toggle}) async {
-    final endPoint = ['me', 'modo-camuflado-toggle'].join('/');
-    final parameters = {'active': toggle ? '1' : '0'};
-
-    try {
-      final response = await _apiProvider
-          .post(path: endPoint, parameters: parameters)
-          .parseValidField();
-      return right(response);
-    } catch (error) {
-      return left(MapExceptionToFailure.map(error));
-    }
-  }
-
-  @override
-  Future<Either<Failure, ValidField>> anonymousMode(
-      {bool toggle = false}) async {
-    final endPoint = ['me', 'modo-anonimo-toggle'].join('/');
-    final parameters = {'active': toggle ? '1' : '0'};
-
-    try {
-      final response = await _apiProvider
-          .post(path: endPoint, parameters: parameters)
-          .parseValidField();
-      return right(response);
-    } catch (error) {
-      return left(MapExceptionToFailure.map(error));
-    }
-  }
 
   @override
   Future<Either<Failure, ValidField>> deleteNotice() async {
