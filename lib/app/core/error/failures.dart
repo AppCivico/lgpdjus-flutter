@@ -21,6 +21,8 @@ class ServerFailure extends Failure implements NetworkServerException {
   final Object? cause;
 }
 
+class AuthenticationFailed extends Failure implements ApiProviderSessionExpection {}
+
 class ServerSideSessionFailed extends Failure implements ApiProviderSessionExpection {}
 
 class InternetConnectionFailure extends Failure implements InternetConnectionException {}

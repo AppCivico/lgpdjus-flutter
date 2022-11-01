@@ -1,5 +1,7 @@
+import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_web_auth/flutter_web_auth.dart';
+import 'package:lgpdjus/app/core/error/failures.dart';
 import 'package:lgpdjus/app/features/appstate/domain/usecases/app_state_usecase.dart';
 import 'package:lgpdjus/app/features/authentication/domain/entities/session_entity.dart';
 import 'package:lgpdjus/app/features/authentication/domain/repositories/i_authentication_repository.dart';
@@ -59,10 +61,16 @@ abstract class _SignInControllerBase with Store, MapFailureMessage {
   }
 
   Future<SessionEntity> _launchURL(String url) async {
-    await FlutterWebAuth.authenticate(
-      url: url,
-      callbackUrlScheme: "lgpdjus",
-    );
+    try {
+      await FlutterWebAuth.authenticate(
+        url: url,
+        callbackUrlScheme: "lgpdjus",
+      );
+    } catch (e) {
+      if (e is PlatformException && e.code == 'CANCELED') {
+        throw AuthenticationFailed();
+      }
+    }
 
     return await repository.authenticate();
   }

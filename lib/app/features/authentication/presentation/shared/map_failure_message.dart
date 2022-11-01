@@ -8,6 +8,7 @@ mixin MapFailureMessage {
   final String serverFailure =
       "O servidor está com problema neste momento, tente novamente.";
   final String loginNeededFailure = "Você precisa fazer login para acessar.";
+  final String authFailed = "Finalize o login utilizando o botão acima.";
   final String genericFailure = "Ops.. ocorreu um erro inesperado.";
 
   String mapFailureMessage(Object failure, [StackTrace? stack]) {
@@ -25,6 +26,8 @@ mixin MapFailureMessage {
       case ServerSideSessionFailed:
         AppNavigator.pushLogin();
         return loginNeededFailure;
+      case AuthenticationFailed:
+        return authFailed;
       default:
         error(failure, stack);
         return genericFailure;
