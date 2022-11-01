@@ -5,5 +5,5 @@ class LogoutUseCase {
 
   final IAppConfiguration _appConfigure;
 
-  Future<void> call() => _appConfigure.logout();
+  Future<String?> call() => _appConfigure.logout();
 }

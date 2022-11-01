@@ -13,7 +13,9 @@ abstract class IAppConfiguration {
 
   Future<void> saveAuthToken(String? token);
 
-  Future<void> logout();
+  Future<void> saveLogoutUrl(String? url);
+
+  Future<String?> logout();
 
   Uri get apiBaseUri;
 
@@ -43,6 +45,7 @@ class AppConfiguration implements IAppConfiguration {
   final _isFirstRunKey = 'br.com.jusbrasil.lgpd.isFirstRun';
   final _hasPendingLgpdTutorialKey =
       'br.com.jusbrasil.lgpd.hasPendingLgpdTutorial';
+  final _logoutUrlKey = 'br.com.jusbrasil.lgpd.logout';
 
   @override
   late Uri apiBaseUri = Uri.parse(kApiBaseUrl);
@@ -103,12 +106,23 @@ class AppConfiguration implements IAppConfiguration {
   Future<void> saveAuthToken(String? token) async {
     token ??= "";
     await _storage.put(_authTokenKey, token);
-    return;
   }
 
   @override
-  Future<void> logout() async {
-    await saveApiToken(token: null);
-    await _storage.delete(USER_DATA_KEY);
+  Future<void> saveLogoutUrl(String? url) async {
+    url ??= "";
+    await _storage.put(_logoutUrlKey, url);
+  }
+
+  @override
+  Future<String?> logout() async {
+    String? logoutUrl = await _storage.get(_logoutUrlKey);
+    await Future.wait([
+      saveApiToken(token: null),
+      _storage.delete(USER_DATA_KEY),
+      _storage.delete(_logoutUrlKey),
+      _storage.delete(_hasPendingLgpdTutorialKey),
+    ]);
+    return logoutUrl;
   }
 }

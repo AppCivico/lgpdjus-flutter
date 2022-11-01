@@ -2,16 +2,20 @@ import 'package:lgpdjus/app/features/authentication/domain/entities/session_enti
 
 class SessionModel extends SessionEntity {
   SessionModel({
-    required String sessionToken,
+    required this.token,
+    required this.logoutUrl,
     required bool deletedScheduled,
-  }) : super(
-          sessionToken: sessionToken,
-          deletedScheduled: deletedScheduled,
-        );
+  }) : super(deletedScheduled: deletedScheduled);
 
-  factory SessionModel.fromJson(Map<String, dynamic> json) {
-    return SessionModel(
-        sessionToken: json['session'],
-        deletedScheduled: json['account_disabled'] == 1);
-  }
+  final String logoutUrl;
+  final String token;
+
+  @override
+  List<Object?> get props => [token, logoutUrl, deletedScheduled];
+
+  factory SessionModel.fromJson(Map<String, dynamic> json) => SessionModel(
+        token: json['session'],
+        logoutUrl: json['logout_url'],
+        deletedScheduled: json['account_disabled'] == 1,
+      );
 }

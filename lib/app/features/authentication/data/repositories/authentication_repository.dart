@@ -27,8 +27,9 @@ class AuthenticationRepository implements IAuthenticationRepository {
     final authToken = await _appConfiguration.authToken;
     final result = await _dataSource.getApiToken(authToken!);
 
-    await _appConfiguration.saveApiToken(token: result.sessionToken);
+    await _appConfiguration.saveApiToken(token: result.token);
     await _appConfiguration.saveAuthToken(null);
+    await _appConfiguration.saveLogoutUrl(result.logoutUrl);
 
     return result;
   }

@@ -1,10 +1,12 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_web_auth/flutter_web_auth.dart';
 import 'package:lgpdjus/app/features/authentication/domain/usecases/logout.dart';
+import 'package:lgpdjus/app/shared/logger/log.dart';
+import 'package:lgpdjus/app/shared/navigation/navigator.dart';
+import 'package:lgpdjus/common/domain/titles/entity.dart';
 import 'package:lgpdjus/features/drawer/domain/entities.dart';
 import 'package:lgpdjus/features/drawer/domain/usecases/get_menu_sections.dart';
 import 'package:lgpdjus/features/drawer/presentation/drawer_states.dart';
-import 'package:lgpdjus/app/shared/navigation/navigator.dart';
-import 'package:lgpdjus/common/domain/titles/entity.dart';
 import 'package:mobx/mobx.dart';
 
 part 'drawer_controller.g.dart';
@@ -35,14 +37,24 @@ abstract class _DrawerMenuControllerBase with Store {
     }
     if (action is NavData) {
       switch (action.route) {
-        case "/logout":
-          await _logout();
+        case '/logout':
+          await _callLogout();
           Modular.to.pop();
           break;
         default:
           AppNavigator.popAndPushNamedIfExists(action.route, args: action.data);
       }
     }
+  }
+
+  Future<void> _callLogout() async {
+    final logoutUrl = await _logout();
+    if (logoutUrl == null) return;
+
+    await FlutterWebAuth.authenticate(
+      url: logoutUrl,
+      callbackUrlScheme: 'lgpdjus',
+    ).catchError(catchErrorLogger);
   }
 }
 

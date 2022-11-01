@@ -33,7 +33,7 @@ class LocalStorageSharedPreferences implements ILocalStorage {
   }
 
   @override
-  Future<void> setBool(String key, bool value)  async{
+  Future<void> setBool(String key, bool value) async {
     final shared = await _instance.future;
     shared.setBool(key, value);
   }
@@ -48,5 +48,6 @@ class LocalStorageSharedPreferences implements ILocalStorage {
   Future<void> clear() async {
     final shared = await _instance.future;
     await shared.clear();
+    await shared.reload();
   }
 }
