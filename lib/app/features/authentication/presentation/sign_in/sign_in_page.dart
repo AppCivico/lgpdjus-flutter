@@ -108,8 +108,9 @@ class _SignInPageState extends ModularState<SignInPage, SignInController>
                               style: kTextStyleFeedTweetShowReply,
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
-                                  AppNavigator.push(
-                                    AppRoute('/privacy_policy'),
+                                  AppNavigator.pushWebView(
+                                    title: 'Política de privacidade',
+                                    url: '/web/politica-privacidade',
                                   );
                                 },
                             ),

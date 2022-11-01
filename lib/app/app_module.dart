@@ -5,13 +5,13 @@ import 'package:lgpdjus/app/core/network/api_server_configure.dart';
 import 'package:lgpdjus/app/core/network/interceptor/interceptor.dart';
 import 'package:lgpdjus/app/core/network/network_info.dart';
 import 'package:lgpdjus/app/core/storage/i_local_storage.dart';
-import 'package:lgpdjus/app/features/authentication/presentation/sign_in/privacy_policy/privacy_policy_page.dart';
 import 'package:lgpdjus/app/features/authentication/presentation/sign_in/sign_in_module.dart';
 import 'package:lgpdjus/app/features/main_module.dart';
 import 'package:lgpdjus/common/data/appstate/datasource.dart';
 import 'package:lgpdjus/common/data/file_provider.dart';
 import 'package:lgpdjus/common/di/widget_resolver.dart';
 import 'package:lgpdjus/common/navigation/action_handler.dart';
+import 'package:lgpdjus/common/widgets/webview_page.dart';
 import 'package:lgpdjus/core/di/module.dart' as di;
 import 'package:lgpdjus/core/provider/file_provider.dart';
 import 'package:lgpdjus/core/router/permission_guard.dart';
@@ -34,7 +34,6 @@ import 'features/appstate/domain/usecases/app_state_usecase.dart';
 import 'features/authentication/domain/usecases/logout.dart';
 import 'features/authentication/presentation/deleted_account/deleted_account_controller.dart';
 import 'features/authentication/presentation/deleted_account/deleted_account_page.dart';
-import 'features/authentication/presentation/sign_in/terms_of_use/terms_of_use_page.dart';
 import 'features/main_menu/domain/repositories/user_profile_repository.dart';
 
 class AppModule extends di.Module {
@@ -146,19 +145,19 @@ class AppModule extends di.Module {
       child: (context, args) => DeletedAccountPage(),
       transition: TransitionType.rightToLeft,
     ),
-    ChildRoute(
-      '/terms_of_use',
-      child: (_, args) => TermsOfUsePage(),
-    ),
-    ChildRoute(
-      '/privacy_policy',
-      child: (_, args) => PrivacyPolicyPage(),
-    ),
     ModuleRoute(
       '/take_picture',
       guards: [CameraPermissionGuard()],
       module: CameraModule(),
     ),
     ModuleRoute('/tutorial', module: TutorialModule()),
+    ChildRoute(
+      '/web',
+      child: (_, args) => WebViewPage(
+        title: args.data['title'],
+        url: args.data['url'],
+      ),
+      transition: TransitionType.rightToLeft,
+    )
   ];
 }

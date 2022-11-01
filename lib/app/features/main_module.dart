@@ -4,7 +4,6 @@ import 'package:lgpdjus/app/features/main_menu/presentation/account/my_profile/p
 import 'package:lgpdjus/app/features/main_page.dart';
 import 'package:lgpdjus/app/features/mainboard/presentation/notification_action_controller.dart';
 import 'package:lgpdjus/features/about/about_lgpd_module.dart';
-import 'package:lgpdjus/features/about/presentation/app/about_app_page.dart';
 import 'package:lgpdjus/features/notification/data/repositories/notification_repository.dart';
 import 'package:lgpdjus/features/notification/presentation/notification_controller.dart';
 import 'package:lgpdjus/features/notification/presentation/notification_page.dart';
@@ -30,11 +29,6 @@ class MainBoardModule extends Module {
         ChildRoute(
           '/notifications',
           child: (_, args) => NotificationPage(),
-          transition: TransitionType.rightToLeft,
-        ),
-        ChildRoute(
-          '/menu/about',
-          child: (context, args) => AboutAppPage(),
           transition: TransitionType.rightToLeft,
         ),
         ChildRoute(

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:lgpdjus/app/shared/logger/log.dart';
 import 'package:lgpdjus/app/shared/navigation/route.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher.dart' as url_launcher;
 
 typedef bool PopUntilPredicate(String? route);
 
@@ -14,11 +14,8 @@ class AppNavigator {
         .catchError(catchErrorLogger);
   }
 
-  static Future<void> push(AppRoute route) {
-    return Modular.to
-        .pushNamed(route.path, arguments: route.args)
-        .catchError(catchErrorLogger);
-  }
+  static Future<dynamic> push(AppRoute route) =>
+      pushNamedIfExists(route.path, args: route.args);
 
   static Future<void> pushAndRemoveUntil(
     String path,
@@ -91,16 +88,28 @@ class AppNavigator {
     return url.startsWith(RegExp(r'https?:\/\/'));
   }
 
-  static Future<void> popAndLaunchUrl(String url) async {
+  static Future<void> popAndLaunchUrl(Uri url) async {
     launchUrl(url);
     pop();
   }
 
-  static Future<void> launchUrl(String url) async {
-    if (await canLaunch(url)) {
-      launch(url);
+  static Future<void> launchUrl(Uri url) async {
+    if (await url_launcher.canLaunchUrl(url)) {
+      await url_launcher.launchUrl(
+        url,
+        mode: url_launcher.LaunchMode.externalApplication,
+      );
     } else {
       error("Can't launch url `$url`");
     }
   }
+
+  static Future pushWebView({
+    required String title,
+    required String url,
+  }) =>
+      pushNamedIfExists(
+        '/web',
+        args: {'title': title, 'url': url},
+      );
 }

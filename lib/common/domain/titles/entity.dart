@@ -41,7 +41,7 @@ class NavData extends ActionData {
 class LinkData extends ActionData {
   LinkData(this.url);
 
-  final String url;
+  final Uri url;
 
   @override
   List<Object?> get props => [];

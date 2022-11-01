@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:lgpdjus/common/domain/titles/entity.dart';
 import 'package:lgpdjus/features/drawer/domain/entities.dart';
 import 'package:lgpdjus/features/drawer/domain/repositories/menu_sections.dart';
@@ -9,11 +11,7 @@ class DrawerMenuSectionsRepository implements MenuSectionsRepository {
   @override
   Future<Menu> getUnauthenticated() async {
     final sections = [
-      MenuItem(title: "Entrar", action: NavData("/authentication")),
-      MenuItem(
-        title: "Criar Conta",
-        action: NavData("/authentication/signup"),
-      ),
+      MenuItem(title: 'Entrar', action: NavData('/authentication')),
       ..._commonSections,
     ];
     return Menu(sections: sections);
@@ -24,11 +22,11 @@ class DrawerMenuSectionsRepository implements MenuSectionsRepository {
     final sections = [
       _getHeaderForAccount(account),
       MenuItem(
-        title: "Minha Conta",
-        action: NavData("/mainboard/menu/profile_edit"),
+        title: 'Minha Conta',
+        action: NavData('/mainboard/menu/profile_edit'),
       ),
       ..._commonSections,
-      MenuItem(title: "Sair", action: NavData("/logout")),
+      MenuItem(title: 'Sair', action: NavData('/logout')),
     ];
     return Menu(sections: sections);
   }
@@ -47,22 +45,43 @@ class DrawerMenuSectionsRepository implements MenuSectionsRepository {
   List<MenuSection> get _commonSections {
     return [
       MenuItem(
-        title: "Site da LGPD no TJSC",
+        title: 'Site da LGPD no TJSC',
         action: LinkData(
-            "https://www.tjsc.jus.br/web/ouvidoria/lei-geral-de-protecao-de-dados-pessoais"),
+          Uri.parse(
+            'https://www.tjsc.jus.br/web/ouvidoria/lei-geral-de-protecao-de-dados-pessoais',
+          ),
+        ),
       ),
-      MenuItem(title: "Tutorial", action: NavData("/tutorial/welcome")),
+      MenuItem(title: 'Tutorial', action: NavData('/tutorial/welcome')),
       MenuItem(
-        title: "Fale com a Encarregada",
-        action: NavData("/mainboard/menu/about"),
+        title: 'Fale com a Encarregada',
+        action: NavData('/web', data: {
+          'title': 'Fale com a Encarregada',
+          'url': '/web/sobre',
+        }),
       ),
       MenuItem(
-        title: "Política de Privacidade",
-        action: NavData("/privacy_policy"),
+        title: 'Política de Privacidade',
+        action: NavData('/web', data: {
+          'title': 'Política de privacidade',
+          'url': '/web/politica-privacidade',
+        }),
       ),
       MenuItem(
-        title: "Termos de Uso",
-        action: NavData("/terms_of_use"),
+        title: 'Sobre recursos de acessibilidade',
+        action: NavData('/web', data: {
+          'title': 'Sobre recursos de acessibilidade',
+          'url': Platform.isIOS
+              ? '/web/acessibilidade-ios'
+              : '/web/acessibilidade-android',
+        }),
+      ),
+      MenuItem(
+        title: 'Sobre permissões e contas',
+        action: NavData('/web', data: {
+          'title': 'Sobre permissões e contas',
+          'url': '/web/permisoes-e-contas',
+        }),
       ),
     ];
   }
