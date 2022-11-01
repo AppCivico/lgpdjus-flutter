@@ -8,10 +8,8 @@ import 'package:lgpdjus/app/features/main_menu/domain/states/profile_edit_state.
 import 'package:lgpdjus/app/features/main_menu/presentation/account/my_profile/profile_edit_controller.dart';
 import 'package:lgpdjus/app/features/main_menu/presentation/account/pages/card_profile_email_page.dart';
 import 'package:lgpdjus/app/features/main_menu/presentation/account/pages/card_profile_name_page.dart';
-import 'package:lgpdjus/app/features/main_menu/presentation/account/pages/card_profile_password_page.dart';
 import 'package:lgpdjus/app/features/main_menu/presentation/account/pages/card_profile_single_tile_page.dart';
 import 'package:lgpdjus/app/shared/design_system/colors.dart';
-import 'package:lgpdjus/app/shared/navigation/navigator.dart';
 import 'package:lgpdjus/app/shared/widgets/appbar/appbar.dart';
 import 'package:lgpdjus/features/user/account/domain/user_account_entities.dart';
 import 'package:mobx/mobx.dart';
@@ -61,8 +59,7 @@ extension _PageBuilder on _ProfileEditPageState {
   Widget bodyBuilder(ProfileEditState state) {
     return state.when(
       initial: () => bodyLoading(),
-      loaded: (profile) =>
-          bodyLoaded(profile),
+      loaded: (profile) => bodyLoaded(profile),
       error: (msg) => SupportCenterGeneralError(
         message: msg,
         onPressed: controller.retry,
@@ -102,19 +99,6 @@ extension _PageBuilder on _ProfileEditPageState {
                 content: profile.email,
                 onChange: controller.updatedEmail,
               ),
-              CardProfilePasswordPage(
-                content: '************',
-                onChange: controller.updatePassword,
-              ),
-              TextButton(
-                child: Text(
-                  'Desativar conta',
-                  style: TextStyle(decoration: TextDecoration.underline),
-                ),
-                onPressed: () {
-                  AppNavigator.pushNamedIfExists('/mainboard/menu/account_delete');
-                },
-              )
             ],
           ),
         ),

@@ -1,6 +1,4 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:lgpdjus/app/features/main_menu/presentation/account/delete/account_delete_controller.dart';
-import 'package:lgpdjus/app/features/main_menu/presentation/account/delete/account_delete_page.dart';
 import 'package:lgpdjus/app/features/main_menu/presentation/account/my_profile/profile_edit_controller.dart';
 import 'package:lgpdjus/app/features/main_menu/presentation/account/my_profile/profile_edit_page.dart';
 import 'package:lgpdjus/app/features/main_page.dart';
@@ -44,21 +42,10 @@ class MainBoardModule extends Module {
           child: (context, args) => ProfileEditPage(),
           transition: TransitionType.rightToLeft,
         ),
-        ChildRoute(
-          '/menu/account_delete',
-          child: (context, args) => AccountDeletePage(),
-          transition: TransitionType.rightToLeft,
-        ),
       ];
 
   @override
   List<Bind> get binds => [
-        Bind(
-          (i) => AccountDeleteController(
-            appConfiguration: i(),
-            profileRepository: i(),
-          ),
-        ),
         Bind<INotificationRepository>(
           (i) => NotificationRepository(
             apiProvider: i.get(),

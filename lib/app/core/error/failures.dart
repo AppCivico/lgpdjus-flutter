@@ -25,8 +25,6 @@ class ServerSideSessionFailed extends Failure implements ApiProviderSessionExpec
 
 class InternetConnectionFailure extends Failure implements InternetConnectionException {}
 
-class UserAndPasswordInvalidFailure extends Failure {}
-
 class EmailAddressInvalidFailure extends Failure {}
 
 class NicknameInvalidFailure extends Failure {}

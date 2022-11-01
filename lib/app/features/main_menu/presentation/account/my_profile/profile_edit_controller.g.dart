@@ -85,19 +85,8 @@ mixin _$ProfileEditController on _ProfileEditControllerBase, Store {
       AsyncAction('_ProfileEditControllerBase.updatedEmail', context: context);
 
   @override
-  Future<void> updatedEmail(String email, String password) {
-    return _$updatedEmailAsyncAction
-        .run(() => super.updatedEmail(email, password));
-  }
-
-  late final _$updatePasswordAsyncAction = AsyncAction(
-      '_ProfileEditControllerBase.updatePassword',
-      context: context);
-
-  @override
-  Future<void> updatePassword(String newPassword, String oldPassword) {
-    return _$updatePasswordAsyncAction
-        .run(() => super.updatePassword(newPassword, oldPassword));
+  Future<void> updatedEmail(String email) {
+    return _$updatedEmailAsyncAction.run(() => super.updatedEmail(email));
   }
 
   @override

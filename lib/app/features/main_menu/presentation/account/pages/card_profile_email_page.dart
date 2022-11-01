@@ -6,7 +6,7 @@ import 'card_profile_header_edit_page.dart';
 
 class CardProfileEmailPage extends StatelessWidget {
   final String content;
-  final void Function(String, String) onChange;
+  final void Function(String newEmail) onChange;
 
   const CardProfileEmailPage({
     Key? key,
@@ -48,7 +48,6 @@ class CardProfileEmailPage extends StatelessWidget {
 extension _Modal on CardProfileEmailPage {
   void showModal({required BuildContext context}) {
     TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
 
     asuka.showDialog(
       builder: (context) => AlertDialog(
@@ -64,14 +63,6 @@ extension _Modal on CardProfileEmailPage {
                   hintText: 'Digite o novo email', filled: true),
             ),
             SizedBox(height: 20),
-            TextFormField(
-              maxLines: 1,
-              autocorrect: false,
-              keyboardType: TextInputType.text,
-              controller: passwordController,
-              decoration: InputDecoration(
-                  hintText: 'Digite a senha atual', filled: true),
-            ),
           ],
         ),
         actions: <Widget>[
@@ -84,7 +75,7 @@ extension _Modal on CardProfileEmailPage {
           FlatButton(
             child: Text('Enviar'),
             onPressed: () async {
-              onChange(emailController.text, passwordController.text);
+              onChange(emailController.text);
               Navigator.of(context).pop();
             },
           ),

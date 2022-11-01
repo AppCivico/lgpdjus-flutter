@@ -55,19 +55,9 @@ abstract class _ProfileEditControllerBase with Store, MapFailureMessage {
   }
 
   @action
-  Future<void> updatedEmail(String email, String password) async {
+  Future<void> updatedEmail(String email) async {
     clearMessageError();
-    final update = UpdateUserProfileEntity(email: email, oldPassword: password);
-    updateProfile(update);
-  }
-
-  @action
-  Future<void> updatePassword(String newPassword, String oldPassword) async {
-    clearMessageError();
-    final update = UpdateUserProfileEntity(
-      newPassword: newPassword,
-      oldPassword: oldPassword,
-    );
+    final update = UpdateUserProfileEntity(email: email);
     updateProfile(update);
   }
 }

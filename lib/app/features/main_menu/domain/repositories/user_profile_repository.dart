@@ -12,7 +12,6 @@ abstract class IUserProfileRepository {
   Future<Either<Failure, ValidField>> stealthMode({required bool toggle});
   Future<Either<Failure, ValidField>> anonymousMode({required bool toggle});
   Future<Either<Failure, ValidField>> deleteNotice();
-  Future<Either<Failure, ValidField>> delete({required String password});
   Future<Either<Failure, ValidField>> reactivate({required String token});
   Future<Either<Failure, AccountPreferenceSessionModel>> preferences();
   Future<Either<Failure, AccountPreferenceSessionModel>> updatePreferences({
@@ -58,23 +57,6 @@ class UserProfileRepository implements IUserProfileRepository {
           .post(path: endPoint, parameters: parameters)
           .parseValidField();
       return right(response);
-    } catch (error) {
-      return left(MapExceptionToFailure.map(error));
-    }
-  }
-
-  @override
-  Future<Either<Failure, ValidField>> delete({required String password}) async {
-    final endPoint = '/me';
-
-    final parameters = {
-      'senha_atual': password,
-      'app_version': await _serverConfiguration.userAgent
-    };
-
-    try {
-      await _apiProvider.delete(path: endPoint, parameters: parameters);
-      return right(ValidField());
     } catch (error) {
       return left(MapExceptionToFailure.map(error));
     }
