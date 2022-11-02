@@ -1,21 +1,18 @@
 import 'package:asuka/asuka.dart' as asuka;
 import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_analytics/observer.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:lgpdjus/app/shared/design_system/theme.dart';
 
 class AppWidget extends StatelessWidget {
-  static FirebaseAnalytics analytics = FirebaseAnalytics();
+  static FirebaseAnalytics get _analytics => FirebaseAnalytics.instance;
   static FirebaseAnalyticsObserver observer =
-      FirebaseAnalyticsObserver(analytics: analytics);
+      FirebaseAnalyticsObserver(analytics: _analytics);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    analytics.setAnalyticsCollectionEnabled(!kDebugMode);
     return MaterialApp(
       title: 'LGPDjus',
       debugShowCheckedModeBanner: false,
