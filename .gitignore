@@ -41,9 +41,8 @@ lib/generated_plugin_registrant.dart
 **/*.ipa
 
 # Fastlane
-fastlane/report.xml
-fastlane/metadata
-lgpdjus/fastlane/metadata
+**/fastlane/report.xml
+**/fastlane/metadata
 
 # DotEnv
 assets/config/env
