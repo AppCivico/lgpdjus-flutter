@@ -6,6 +6,7 @@ import 'package:lgpdjus/core/data/mapper.dart';
 import 'package:lgpdjus/core/types.dart';
 import 'package:lgpdjus/features/user/account/data/user_account_datasource.dart';
 import 'package:lgpdjus/features/user/account/data/user_account_model.dart';
+import 'package:lgpdjus/features/user/account/domain/exception/profile_not_found_error.dart';
 
 class AccountLocalDataSourceImpl extends LocalStore<AccountModel>
     implements AccountLocalDataSource {
@@ -42,8 +43,7 @@ class AccountRemoteDataSourceImpl extends AccountRemoteDataSource {
       _appStateDataSource.observer().map(_parseProfile);
 
   AccountModel _parseProfile(JsonObject jsonData) {
-    if (!jsonData.containsKey('user_profile'))
-      throw Exception('Profile data not found');
+    if (!jsonData.containsKey('user_profile')) throw ProfileNotFountError();
     return _mapper.call(jsonData['user_profile']);
   }
 }

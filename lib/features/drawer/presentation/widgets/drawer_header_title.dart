@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lgpdjus/features/drawer/presentation/widgets/account_badge.dart';
-import 'package:lgpdjus/features/user/account/domain/user_account_entities.dart';
 
 class DrawerHeaderTitle extends StatelessWidget {
   DrawerHeaderTitle({required this.title, required this.status, this.padding});
@@ -8,7 +7,7 @@ class DrawerHeaderTitle extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
 
   final String title;
-  final AccountStatus status;
+  final String status;
 
   @override
   Widget build(BuildContext context) {

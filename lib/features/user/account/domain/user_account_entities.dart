@@ -8,13 +8,11 @@ class Account extends Equatable {
     required this.status,
   });
 
-  final String email;
+  final String? email;
   final String fullName;
   final String nickname;
-  final AccountStatus status;
+  final String status;
 
   @override
   List<Object?> get props => [email, fullName, nickname, status];
 }
-
-enum AccountStatus { verified, unverified, processing }

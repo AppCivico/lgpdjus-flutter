@@ -9,9 +9,6 @@ export 'package:lgpdjus/features/user/account/data/user_account_model.dart';
 export 'package:lgpdjus/features/user/account/domain/user_account_entities.dart';
 
 class AccountJsonToLocalModel extends IMapper<JsonObject, AccountLocalModel> {
-  AccountJsonToLocalModel(this.statusMapper);
-
-  final IMapper<String, AccountStatus> statusMapper;
 
   @override
   AccountLocalModel call(JsonObject source) {
@@ -19,15 +16,12 @@ class AccountJsonToLocalModel extends IMapper<JsonObject, AccountLocalModel> {
       email: source['email'],
       fullName: source['name'],
       nickname: source['nickname'],
-      status: statusMapper.call(source['status']),
+      status: source['status'],
     );
   }
 }
 
 class AccountJsonToRemoteModel extends IMapper<JsonObject, AccountRemoteModel> {
-  AccountJsonToRemoteModel(this.statusMapper);
-
-  final IMapper<JsonObject, AccountStatus> statusMapper;
 
   @override
   AccountRemoteModel call(JsonObject source) {
@@ -35,7 +29,7 @@ class AccountJsonToRemoteModel extends IMapper<JsonObject, AccountRemoteModel> {
       email: source['email'] ?? '',
       fullName: source['nome_completo'] ?? '',
       nickname: source['apelido'] ?? '',
-      status: statusMapper.call(source),
+      status: source['govbr_nivel'] ?? '',
     );
   }
 }
@@ -53,17 +47,13 @@ class AccountModelToEntity extends IMapper<AccountModel, Account> {
 }
 
 class AccountModelToJson implements IMapper<AccountModel, JsonObject> {
-  AccountModelToJson(this.statusMapper);
-
-  final IMapper<AccountStatus, String> statusMapper;
-
   @override
   JsonObject call(AccountModel source) {
     return {
       'email': source.email,
       'name': source.fullName,
       'nickname': source.nickname,
-      'status': statusMapper.call(source.status),
+      'status': source.status,
     };
   }
 }

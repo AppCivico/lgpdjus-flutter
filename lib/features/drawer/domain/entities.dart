@@ -1,5 +1,4 @@
 import 'package:lgpdjus/common/domain/titles/entity.dart';
-import 'package:lgpdjus/features/user/account/domain/user_account_entities.dart';
 
 class Menu {
   Menu({required this.sections});
@@ -23,19 +22,7 @@ class MenuHeader extends MenuSection {
   });
 
   final String title;
-  final AccountStatus status;
-}
-
-class MenuHeaderUnverified extends MenuHeader {
-  MenuHeaderUnverified({
-    required String title,
-    required this.subtitle,
-    required this.action,
-    required AccountStatus status,
-  }) : super(title: title, status: status);
-
-  final String subtitle;
-  final MenuAction action;
+  final String status;
 }
 
 class MenuAction extends Actionable {

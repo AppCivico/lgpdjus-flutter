@@ -7,8 +7,6 @@ import 'package:lgpdjus/app/features/authentication/data/repositories/authentica
 import 'package:lgpdjus/app/features/authentication/domain/repositories/i_authentication_repository.dart';
 import 'package:lgpdjus/app/features/authentication/presentation/sign_in/sign_in_controller.dart';
 import 'package:lgpdjus/app/features/authentication/presentation/sign_in/sign_in_page.dart';
-import 'package:lgpdjus/features/user/verification/user_verification_page.dart';
-import 'package:lgpdjus/features/user/verification/user_verification_pending_page.dart';
 
 class SignInModule extends Module {
   @override
@@ -26,14 +24,6 @@ class SignInModule extends Module {
   @override
   List<ModularRoute> get routes => [
         ChildRoute(Modular.initialRoute, child: (_, args) => SignInPage()),
-        ChildRoute(
-          '/verify_account',
-          child: (_, args) => AccountVerificationPage(),
-        ),
-        ChildRoute(
-          '/verification_in_progress',
-          child: (_, args) => AccountPendingVerificationPage(),
-        ),
       ];
 
   List<Bind> get _interfaces => [

@@ -1,6 +1,7 @@
 import 'dart:developer' as dev;
 
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:lgpdjus/common/exception/non_loggable_error.dart';
 import 'package:logging/logging.dart';
 import 'package:stack_trace/stack_trace.dart';
 
@@ -19,7 +20,9 @@ void error(Object exception, [StackTrace? stack]) {
     error: exception,
     stackTrace: stack,
   );
-  FirebaseCrashlytics.instance.recordError(exception, stack);
+  if (exception is! NonLoggableError) {
+    FirebaseCrashlytics.instance.recordError(exception, stack);
+  }
 }
 
 OnError get catchErrorLogger {

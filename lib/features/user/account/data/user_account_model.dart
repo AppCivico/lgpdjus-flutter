@@ -1,5 +1,3 @@
-import 'package:lgpdjus/features/user/account/domain/user_account_entities.dart';
-
 abstract class AccountModel {
   AccountModel({
     required this.email,
@@ -8,18 +6,18 @@ abstract class AccountModel {
     required this.status,
   });
 
-  final String email;
+  final String? email;
   final String fullName;
   final String nickname;
-  final AccountStatus status;
+  final String status;
 }
 
 class AccountLocalModel extends AccountModel {
   AccountLocalModel({
-    required String email,
+    required String? email,
     required String nickname,
     required String fullName,
-    required AccountStatus status,
+    required String status,
   }) : super(
           email: email,
           fullName: fullName,
@@ -30,10 +28,10 @@ class AccountLocalModel extends AccountModel {
 
 class AccountRemoteModel extends AccountModel {
   AccountRemoteModel({
-    required String email,
+    required String? email,
     required String nickname,
     required String fullName,
-    required AccountStatus status,
+    required String status,
   }) : super(
           email: email,
           fullName: fullName,

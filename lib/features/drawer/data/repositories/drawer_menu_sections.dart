@@ -20,7 +20,10 @@ class DrawerMenuSectionsRepository implements MenuSectionsRepository {
   @override
   Future<Menu> getAuthenticated(Account account) async {
     final sections = [
-      _getHeaderForAccount(account),
+      MenuHeader(
+        title: account.fullName,
+        status: account.status,
+      ),
       MenuItem(
         title: 'Minha Conta',
         action: NavData('/mainboard/menu/profile_edit'),
@@ -29,17 +32,6 @@ class DrawerMenuSectionsRepository implements MenuSectionsRepository {
       MenuItem(title: 'Sair', action: NavData('/logout')),
     ];
     return Menu(sections: sections);
-  }
-
-  MenuHeader _getHeaderForAccount(Account account) {
-    if (account.status == AccountStatus.verified)
-      return MenuHeader(title: account.fullName, status: account.status);
-    return MenuHeaderUnverified(
-      title: account.fullName,
-      subtitle: 'Faça a verificação da sua conta.',
-      action: MenuAction('Validar conta', NavData(account.status.route)),
-      status: account.status,
-    );
   }
 
   List<MenuSection> get _commonSections {
@@ -84,18 +76,5 @@ class DrawerMenuSectionsRepository implements MenuSectionsRepository {
         }),
       ),
     ];
-  }
-}
-
-extension AccountStatusHelper on AccountStatus {
-  String get route {
-    switch (this) {
-      case AccountStatus.unverified:
-        return '/account/verify';
-      case AccountStatus.processing:
-        return '/authentication/verification_in_progress';
-      default:
-        throw Exception('Get route not allowed');
-    }
   }
 }

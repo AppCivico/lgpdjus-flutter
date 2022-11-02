@@ -96,7 +96,7 @@ extension _PageBuilder on _ProfileEditPageState {
                 background: DesignSystemColors.systemBackgroundColor,
               ),
               CardProfileEmailPage(
-                content: profile.email,
+                content: profile.email ?? '',
                 onChange: controller.updatedEmail,
               ),
             ],
