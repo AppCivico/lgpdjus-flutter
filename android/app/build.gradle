@@ -27,6 +27,8 @@ if (!secretsPropertiesFile.exists()) {
 def secretsProperties = new Properties()
 secretsProperties.load(new FileInputStream(secretsPropertiesFile))
 
+def isFirebaseDistribution = System.getenv('IS_FIREBASE_DISTRIBUTION') == 'true'
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
@@ -67,7 +69,17 @@ android {
             applicationIdSuffix = '.dev'
         }
         release {
+            applicationIdSuffix isFirebaseDistribution ? ".dev" : ""
             signingConfig signingConfigs.release
+        }
+    }
+
+    sourceSets {
+        debug {
+            res.srcDirs += ['src/dev/res']
+        }
+        release {
+            res.srcDirs += isFirebaseDistribution ? ['src/dev/res'] : []
         }
     }
 }
