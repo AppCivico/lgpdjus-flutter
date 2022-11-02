@@ -1,1 +1,1 @@
-const kApiBaseUrl = String.fromEnvironment('API_BASE_URL');
+const kApiBaseUrl = String.fromEnvironment('LGPDJUS_API_BASE_URL');
