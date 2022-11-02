@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -e
+
+PROJECT_DIR=$(dirname $(dirname ${BASH_SOURCE[0]}))
+RUN_LANE=firebase_distribute
+
+# extract arguments
+for i in "$@"; do
+  case $i in
+    --release)
+      RUN_LANE=release_distribute
+      shift
+      ;;
+    -*|--*)
+      echo "Unknown option '$i'"
+      exit 1
+      ;;
+    *)
+      ;;
+  esac
+done
+
+for platform in ios android; do
+    cd $PROJECT_DIR/$platform \
+        && bundle install \
+        && bundle exec fastlane $RUN_LANE --verbose
+done
