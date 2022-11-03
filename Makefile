@@ -5,7 +5,7 @@ SHELL := /bin/bash
 ENV_FILES := $(wildcard .env.default .env)
 ifneq ($(ENV_FILES),)
 include $(ENV_FILES)
-export $(shell grep -he '^[^\#;]' $(ENV_FILES) | sed 's/=.*//' | sort | uniq)
+export $(shell grep -he '^[^\#;]' $(ENV_FILES) | sed 's/=.*//' | sort -u)
 endif
 
 # Make sed portable with macOS
@@ -37,4 +37,4 @@ ifndef VERBOSE
 .SILENT:
 endif
 
-.PHONY: help phony run codegen release setup_google_services
+.PHONY: help phony run codegen setup_google_services bump_version beta release
