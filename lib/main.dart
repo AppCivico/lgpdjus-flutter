@@ -17,9 +17,11 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  final analyticsEnabled = !kDebugMode;
   await Future.wait([
-    FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(kDebugMode),
-    FirebaseAnalytics.instance.setAnalyticsCollectionEnabled(kDebugMode),
+    FirebaseCrashlytics.instance
+        .setCrashlyticsCollectionEnabled(analyticsEnabled),
+    FirebaseAnalytics.instance.setAnalyticsCollectionEnabled(analyticsEnabled),
   ]);
 
   // Pass all uncaught errors from the framework to Crashlytics.
