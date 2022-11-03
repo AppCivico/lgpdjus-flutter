@@ -64,8 +64,8 @@ abstract class _ProfileEditControllerBase with Store, MapFailureMessage {
 
 extension _PrivateMethod on _ProfileEditControllerBase {
   Future<void> loadProfile() async {
-    _getAccount
-        .call()
+    _getAccount()
+        .skipWhile((event) => event == null)
         .map<Account>((event) => event!)
         .listen(handleProfile, onError: handleLoadPageError);
   }
@@ -85,8 +85,8 @@ extension _PrivateMethod on _ProfileEditControllerBase {
     state = ProfileEditState.loaded(profile);
   }
 
-  handleLoadPageError(Object failure) {
-    final message = mapFailureMessage(failure);
+  handleLoadPageError(Object failure, StackTrace? stack) {
+    final message = mapFailureMessage(failure, stack);
     state = ProfileEditState.error(message);
   }
 
