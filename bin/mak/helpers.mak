@@ -5,7 +5,7 @@ bump_version: ## Bump app version
 	./bin/bump-version.sh --commit-changes
 
 beta: ## Publish package to beta channel
-	./bin/publish
+	./bin/publish.sh
 
 release: ## Publish package to Stores
-	./bin/publish --release
+	./bin/publish.sh --release

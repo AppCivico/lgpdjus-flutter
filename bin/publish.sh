@@ -2,7 +2,8 @@
 
 set -e
 
-PROJECT_DIR=$(dirname $(dirname ${BASH_SOURCE[0]}))
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+PROJECT_DIR=$(dirname $SCRIPTPATH)
 RUN_LANE=firebase_distribute
 
 # extract arguments

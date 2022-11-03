@@ -1,5 +1,5 @@
 # Uncomment this line to define a global platform for your project
-$iphoneosDeploymentTarget = '11.0'
+$iphoneosDeploymentTarget = '13.0'
 
 platform :ios, $iphoneosDeploymentTarget
 
