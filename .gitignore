@@ -44,24 +44,21 @@ lib/generated_plugin_registrant.dart
 **/fastlane/report.xml
 **/fastlane/metadata
 
-# DotEnv
-assets/config/env
-
 # Slidy
 .slidy/
 
 # Coverage
 coverage/
-ios/certificates
 
 # Google Services
-google-services.json
-GoogleService-Info.plist
+**/google-services.json
+**/GoogleService-Info.plist
+**/firebase_app_id_file.json
 lib/firebase_options.dart
-ios/firebase_app_id_file.json
 
 # Env
 .env
 
 # Signing
 *.keystore
+ios/certificates
