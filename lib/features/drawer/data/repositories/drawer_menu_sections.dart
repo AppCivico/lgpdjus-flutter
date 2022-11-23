@@ -75,6 +75,10 @@ class DrawerMenuSectionsRepository implements MenuSectionsRepository {
           'url': '/web/permisoes-e-contas',
         }),
       ),
+      MenuItem(
+        title: "Termos de Uso",
+        action: NavData("/terms_of_use"),
+      ),
     ];
   }
 }
