@@ -35,8 +35,6 @@ class FailureHandlerInterceptor implements HttpInterceptor {
     if (bodyContent.containsKey("error")) {
       if (bodyContent['error'] == 'expired_jwt')
         throw ServerSideSessionFailed();
-      if (bodyContent['error'] == 'no-gps')
-        throw GpsFailure(bodyContent['message']);
       if (bodyContent['error'] == 'location_not_found')
         throw AddressFailure(bodyContent['message']);
       if (bodyContent['error'] == 'must_verify_account')

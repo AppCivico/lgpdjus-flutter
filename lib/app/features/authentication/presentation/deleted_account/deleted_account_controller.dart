@@ -52,7 +52,7 @@ abstract class _DeletedAccountControllerBase with Store, MapFailureMessage {
     final result = await _progress;
 
     result?.fold(
-      (failure) => handleError(failure),
+      (failure) => handleError(failure, StackTrace.current),
       (session) => handleSession(session),
     );
   }
@@ -73,8 +73,8 @@ extension _PrivateMethods on _DeletedAccountControllerBase {
         : PageProgressState.loaded;
   }
 
-  void handleError(Failure failure) {
-    setErrorMessage(mapFailureMessage(failure));
+  void handleError(Failure failure, StackTrace? stack) {
+    setErrorMessage(mapFailureMessage(failure, stack));
   }
 
   Future<void> handleSession(ValidField session) async {

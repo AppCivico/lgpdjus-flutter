@@ -52,7 +52,7 @@ abstract class _AccountPreferenceControllerBase with Store, MapFailureMessage {
     final result = await _progress;
 
     result?.fold(
-      (failure) => handleUpdateError(failure),
+      (failure) => handleUpdateError(failure, StackTrace.current),
       (session) => handleSession(session),
     );
   }
@@ -63,7 +63,7 @@ extension _MethodPrivate on _AccountPreferenceControllerBase {
     final result = await _userProfileRepository.preferences();
 
     result.fold(
-      (failure) => handleError(failure),
+      (failure) => handleError(failure, StackTrace.current),
       (session) => handleSession(session),
     );
   }
@@ -72,13 +72,13 @@ extension _MethodPrivate on _AccountPreferenceControllerBase {
     state = AccountPreferenceState.loaded(session.preferences);
   }
 
-  void handleError(Failure failure) {
-    final message = mapFailureMessage(failure);
+  void handleError(Failure failure, StackTrace? stack) {
+    final message = mapFailureMessage(failure, stack);
     state = AccountPreferenceState.error(message);
   }
 
-  void handleUpdateError(Failure failure) {
-    final message = mapFailureMessage(failure);
+  void handleUpdateError(Failure failure, StackTrace? stack) {
+    final message = mapFailureMessage(failure, stack);
     setMessageErro(message);
   }
 

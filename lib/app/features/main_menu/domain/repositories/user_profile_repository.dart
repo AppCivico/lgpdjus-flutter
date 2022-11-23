@@ -35,8 +35,8 @@ class UserProfileRepository implements IUserProfileRepository {
     try {
       final response = await _apiProvider.get(path: endPoint).parseValidField();
       return right(response);
-    } catch (error) {
-      return left(MapExceptionToFailure.map(error));
+    } catch (error, stack) {
+      return left(MapExceptionToFailure.map(error, stack));
     }
   }
 
@@ -53,8 +53,8 @@ class UserProfileRepository implements IUserProfileRepository {
     try {
       await _apiProvider.post(path: endPoint, parameters: parameters);
       return right(ValidField(message: token));
-    } catch (error) {
-      return left(MapExceptionToFailure.map(error));
+    } catch (error, stack) {
+      return left(MapExceptionToFailure.map(error, stack));
     }
   }
 
@@ -67,8 +67,8 @@ class UserProfileRepository implements IUserProfileRepository {
       final jsonData = jsonDecode(data) as Map<String, dynamic>;
       final session = AccountPreferenceSessionModel.fromJson(jsonData);
       return right(session);
-    } catch (error) {
-      return left(MapExceptionToFailure.map(error));
+    } catch (error, stack) {
+      return left(MapExceptionToFailure.map(error, stack));
     }
   }
 
@@ -84,8 +84,8 @@ class UserProfileRepository implements IUserProfileRepository {
       final jsonData = jsonDecode(data) as Map<String, dynamic>;
       final session = AccountPreferenceSessionModel.fromJson(jsonData);
       return right(session);
-    } catch (error) {
-      return left(MapExceptionToFailure.map(error));
+    } catch (error, stack) {
+      return left(MapExceptionToFailure.map(error, stack));
     }
   }
 }

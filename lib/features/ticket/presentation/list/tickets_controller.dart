@@ -68,7 +68,7 @@ extension _PrivateMethod on _TicketControllerBase {
     }
   }
 
-  void handleStateError(Object f) {
-    state = TicketState.error(mapFailureMessage(f));
+  void handleStateError(Object f, StackTrace? stack) {
+    state = TicketState.error(mapFailureMessage(f, stack));
   }
 }

@@ -54,7 +54,7 @@ abstract class _SignInControllerBase with Store, MapFailureMessage {
           .getLoginUrl()
           .then(_launchURL)
           .then(_forwardToLogged)
-          .catchError((error) => _setErrorMessage(error)),
+          .catchError((error, stack) => _setErrorMessage(error, stack)),
     );
 
     await _progress;
@@ -86,7 +86,7 @@ abstract class _SignInControllerBase with Store, MapFailureMessage {
     }
   }
 
-  void _setErrorMessage(Object failure) {
-    errorMessage = mapFailureMessage(failure);
+  void _setErrorMessage(Object failure, [StackTrace? stack]) {
+    errorMessage = mapFailureMessage(failure, stack);
   }
 }

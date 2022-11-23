@@ -25,7 +25,9 @@ void main() async {
   ]);
 
   // Pass all uncaught errors from the framework to Crashlytics.
-  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
+  FlutterError.onError = (error) =>
+      FirebaseCrashlytics.instance.recordFlutterError(error, fatal: true);
+
   EquatableConfig.stringify = true;
 
   runZonedGuarded(() async {

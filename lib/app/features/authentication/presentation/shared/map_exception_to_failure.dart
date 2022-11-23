@@ -6,7 +6,7 @@ import 'package:lgpdjus/app/shared/logger/log.dart' as logger;
 
 @Deprecated("Will be removed soon")
 class MapExceptionToFailure {
-  static Failure map(Object error, [StackTrace? stack]) {
+  static Failure map(Object error, StackTrace? stack) {
     if (error is! InternetConnectionFailure)
       logger.error(error, stack);
 
@@ -21,9 +21,6 @@ class MapExceptionToFailure {
     if (error is ApiProviderException) {
       if (error.bodyContent['error'] == 'expired_jwt') {
         return ServerSideSessionFailed();
-      }
-      if (error.bodyContent['error'] == 'no-gps') {
-        return GpsFailure(error.bodyContent['message']);
       }
       if (error.bodyContent['error'] == 'location_not_found') {
         return AddressFailure(error.bodyContent['message']);

@@ -61,8 +61,8 @@ extension _PrivateMethod on _NotificationControllerBase {
     }
   }
 
-  void handleStateError(Object f) {
-    state = NotificationState.error(mapFailureMessage(f));
+  void handleStateError(Object f, StackTrace? stack) {
+    state = NotificationState.error(mapFailureMessage(f, stack));
   }
 
   void setErrorMessage(String msg) {

@@ -41,22 +41,11 @@ class FullnameInvalidFailure extends Failure {}
 
 class HumanRaceInvalidFailure extends Failure {}
 
-class GuardianAlertGpsFailure extends Failure {}
-
 class RequiredParameter extends Failure {}
 
 class AudioDownloadFailure extends Failure {}
 
 class FileSystemFailure extends Failure {}
-
-class GpsFailure extends Failure {
-  final String message;
-
-  GpsFailure(this.message);
-
-  @override
-  List<Object?> get props => [message];
-}
 
 class AddressFailure extends Failure {
   final String message;

@@ -11,7 +11,7 @@ mixin MapFailureMessage {
   final String authFailed = "Finalize o login utilizando o botão acima.";
   final String genericFailure = "Ops.. ocorreu um erro inesperado.";
 
-  String mapFailureMessage(Object failure, [StackTrace? stack]) {
+  String mapFailureMessage(Object failure, StackTrace? stack) {
     if (failure is String) return failure;
 
     switch (failure.runtimeType) {

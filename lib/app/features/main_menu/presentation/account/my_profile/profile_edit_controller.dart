@@ -76,7 +76,7 @@ extension _PrivateMethod on _ProfileEditControllerBase {
     final result = await _progress;
 
     result?.fold(
-      (failure) => handleUpdateError(failure),
+      (failure) => handleUpdateError(failure, StackTrace.current),
       (_) {},
     );
   }
@@ -90,8 +90,8 @@ extension _PrivateMethod on _ProfileEditControllerBase {
     state = ProfileEditState.error(message);
   }
 
-  void handleUpdateError(Failure failure) {
-    final msg = mapFailureMessage(failure);
+  void handleUpdateError(Failure failure, StackTrace? stack) {
+    final msg = mapFailureMessage(failure, stack);
     setMessageError(msg);
   }
 
