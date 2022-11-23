@@ -8,7 +8,6 @@ import 'package:lgpdjus/app/features/authentication/presentation/shared/snack_ba
 import 'package:lgpdjus/app/shared/design_system/linear_gradient_design_system.dart';
 import 'package:lgpdjus/app/shared/design_system/text_styles.dart';
 import 'package:lgpdjus/app/shared/navigation/navigator.dart';
-import 'package:lgpdjus/app/shared/navigation/route.dart';
 import 'package:lgpdjus/app/shared/widgets/appbar/appbar.dart';
 import 'package:mobx/mobx.dart';
 
@@ -46,7 +45,6 @@ class _SignInPageState extends ModularState<SignInPage, SignInController>
 
   @override
   Widget build(BuildContext context) {
-    print(_currentState);
     return SizedBox.expand(
       child: Container(
         decoration: kLinearGradientDesignSystem,
@@ -77,10 +75,10 @@ class _SignInPageState extends ModularState<SignInPage, SignInController>
                       padding: EdgeInsets.only(top: 16),
                       child: RichText(
                         text: TextSpan(
-                          text:
-                              'Abertura e acompanhamento de solicitações referentes a'
-                              ' nova legislação de proteção de dados pessoais (LGPD) '
-                              'referente ao Tribunal de Justiça de Santa Catarina.',
+                          text: 'Abertura e acompanhamento de solicitações '
+                              'referente a nova legislação de '
+                              'proteção de dados pessoais aplicada ao '
+                              'Tribunal de Justiça de Santa Catarina.',
                           style: Theme.of(context).textTheme.bodyText2,
                         ),
                         textAlign: TextAlign.center,

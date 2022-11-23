@@ -55,23 +55,23 @@ class DrawerMenuSectionsRepository implements MenuSectionsRepository {
       MenuItem(
         title: 'Política de Privacidade',
         action: NavData('/web', data: {
-          'title': 'Política de privacidade',
+          'title': 'Política de Privacidade',
           'url': '/web/politica-privacidade',
         }),
       ),
       MenuItem(
-        title: 'Sobre recursos de acessibilidade',
+        title: 'Sobre Recursos de Acessibilidade',
         action: NavData('/web', data: {
-          'title': 'Sobre recursos de acessibilidade',
+          'title': 'Sobre Recursos de Acessibilidade',
           'url': Platform.isIOS
               ? '/web/acessibilidade-ios'
               : '/web/acessibilidade-android',
         }),
       ),
       MenuItem(
-        title: 'Sobre permissões e contas',
+        title: 'Sobre Permissões e Contas',
         action: NavData('/web', data: {
-          'title': 'Sobre permissões e contas',
+          'title': 'Sobre Permissões e Contas',
           'url': '/web/permisoes-e-contas',
         }),
       ),
