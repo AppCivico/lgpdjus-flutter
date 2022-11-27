@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dartz/dartz.dart';
 
 extension FutureCatch<T> on Future<T> {
@@ -8,4 +10,9 @@ extension FutureCatch<T> on Future<T> {
       return catched;
     });
   }
+}
+
+extension FutureNullableExt<T> on Future<T?> {
+  Future<R?> whenNotNull<R>(FutureOr<R?> onValue(T value)) =>
+      then((value) => value != null ? onValue(value) : null);
 }

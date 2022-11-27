@@ -1,4 +1,5 @@
-import 'package:asuka/asuka.dart' as asuka;
+import 'package:asuka/asuka.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:lgpdjus/app/core/extension/iterable.dart';
 import 'package:lgpdjus/common/domain/titles/entity.dart';
@@ -19,14 +20,21 @@ mixin DialogHandler {
         dialog.secondaryAction,
       );
 
+  void maybeShowDialog(DialogData? dialog) {
+    if (dialog != null) {
+      showDialog(dialog);
+    }
+  }
+
   Future showAlertDialog(
     String title,
     String content,
     NamedAction primaryAction, [
     NamedAction? secondaryAction,
   ]) {
-    return asuka.showDialog(
+    return Asuka.showDialog(
       barrierDismissible: false,
+      barrierColor: Colors.black38,
       builder: (context) {
         final themeData = Theme.of(context);
         return AlertDialog(
@@ -88,7 +96,7 @@ mixin DialogHandler {
   }
 }
 
-class DialogData {
+class DialogData extends Equatable {
   DialogData(
     this.title,
     this.content,
@@ -100,4 +108,7 @@ class DialogData {
   final String content;
   final NamedAction primaryAction;
   final NamedAction? secondaryAction;
+
+  @override
+  List<Object?> get props => [title, content, primaryAction, secondaryAction];
 }
