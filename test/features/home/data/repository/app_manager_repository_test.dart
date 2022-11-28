@@ -23,12 +23,15 @@ void main() {
     test(
       'getCurrentAppVersion should get app version from PackageInfo',
       () async {
+        // arrange
         const expectedAppVersion = '1.2.3';
 
         when(() => packageInfo.version).thenReturn(expectedAppVersion);
 
+        // act
         final actualAppVersion = await sut.getCurrentAppVersion();
 
+        // assert
         expect(actualAppVersion, Version(1, 2, 3));
       },
     );
@@ -36,13 +39,16 @@ void main() {
     test(
       'getSavedAppVersion should get app version from appConfiguration',
       () async {
+        // arrange
         const expectedAppVersion = '3.2.1';
 
         when(() => appConfiguration.savedAppVersion)
             .thenAnswer((_) async => expectedAppVersion);
 
+        // act
         final actualAppVersion = await sut.getSavedAppVersion();
 
+        // assert
         expect(actualAppVersion, Version(3, 2, 1));
       },
     );
@@ -50,13 +56,16 @@ void main() {
     test(
       'saveCurrentAppVersion should save packageInfo.version to appConfiguration.version',
       () async {
+        // arrange
         const expectedAppVersion = '9.87.654';
 
         when(() => packageInfo.version).thenReturn(expectedAppVersion);
         when(() => appConfiguration.appVersion = expectedAppVersion);
 
+        // act
         await sut.saveCurrentAppVersion();
 
+        // assert
         verify(() => appConfiguration.appVersion = expectedAppVersion)
             .called(1);
       },

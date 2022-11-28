@@ -42,6 +42,7 @@ class HomeModule extends ModularWidget {
         ),
         Bind(
           (inject) => SaveCurrentAppVersion(
+            appConfiguration: inject(),
             repository: inject(),
           ),
         ),

@@ -16,10 +16,6 @@ class IsFirstRunUseCase {
     // legacy first run verification
     final isNotFirstRun = !await _appConfiguration.isFirstRun;
     if (isNotFirstRun) {
-      await Future.wait([
-        _repository.saveCurrentAppVersion(),
-        _appConfiguration.removeFirstRunKey()
-      ]);
       return false;
     }
 

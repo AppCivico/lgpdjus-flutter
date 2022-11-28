@@ -38,40 +38,6 @@ void main() {
     );
 
     test(
-      'when appConfiguration.isFirstRun is false should call appConfiguration.removeFirstRunKey',
-      () async {
-        // arrange
-        when(() => appConfiguration.isFirstRun).thenAnswer((_) async => false);
-        when(() => appConfiguration.removeFirstRunKey())
-            .thenAnswer((_) async {});
-        when(() => repository.saveCurrentAppVersion()).thenAnswer((_) async {});
-
-        // act
-        await sut();
-
-        // assert
-        verify(() => appConfiguration.removeFirstRunKey()).called(1);
-      },
-    );
-
-    test(
-      'when appConfiguration.isFirstRun is false should call repository.saveCurrentAppVersion',
-      () async {
-        // arrange
-        when(() => appConfiguration.isFirstRun).thenAnswer((_) async => false);
-        when(() => appConfiguration.removeFirstRunKey())
-            .thenAnswer((_) async {});
-        when(() => repository.saveCurrentAppVersion()).thenAnswer((_) async {});
-
-        // act
-        await sut();
-
-        // assert
-        verify(() => repository.saveCurrentAppVersion()).called(1);
-      },
-    );
-
-    test(
       'when saved version is none should return true',
       () async {
         // arrange
