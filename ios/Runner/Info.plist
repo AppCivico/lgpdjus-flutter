@@ -37,6 +37,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>We use the camera to help users take a photo of their documents optionally in the process of validating their accounts.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>We use the camera to help users take a photo of their documents optionally in the process of validating their accounts.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
