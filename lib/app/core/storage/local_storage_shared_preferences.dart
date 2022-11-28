@@ -6,13 +6,17 @@ import 'package:shared_preferences/shared_preferences.dart';
 class LocalStorageSharedPreferences implements ILocalStorage {
   Completer<SharedPreferences> _instance = Completer<SharedPreferences>();
 
+  LocalStorageSharedPreferences() {
+    _init();
+  }
+
   _init() async {
     _instance.complete(await SharedPreferences.getInstance());
   }
 
-  LocalStorageSharedPreferences() {
-    _init();
-  }
+  @override
+  Future<bool> hasKey(String key) =>
+      _instance.future.then((preferences) => preferences.containsKey(key));
 
   @override
   Future<void> delete(String key) async {

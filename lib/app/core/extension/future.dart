@@ -15,4 +15,7 @@ extension FutureCatch<T> on Future<T> {
 extension FutureNullableExt<T> on Future<T?> {
   Future<R?> whenNotNull<R>(FutureOr<R?> onValue(T value)) =>
       then((value) => value != null ? onValue(value) : null);
+
+  Future<T> whenNull<T>(FutureOr<T> onNullValue()) =>
+      then((value) => value == null ? onNullValue() : value as FutureOr<T>);
 }

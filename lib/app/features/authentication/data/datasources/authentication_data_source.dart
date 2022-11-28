@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:lgpdjus/app/core/error/exceptions.dart';
 import 'package:lgpdjus/app/features/authentication/data/models/login_session.dart';
 import 'package:lgpdjus/app/features/authentication/data/models/session_model.dart';
-import 'package:package_info/package_info.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 abstract class IAuthenticationDataSource {
   Future<LoginSession> getLoginSession();

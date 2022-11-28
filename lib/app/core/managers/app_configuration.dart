@@ -23,11 +23,15 @@ abstract class IAppConfiguration {
 
   Future<bool> get isFirstRun;
 
-  set firstRun(bool isFirstRun);
+  Future<void> removeFirstRunKey();
 
   Future<bool> get hasPendingLgpdTutorial;
 
   set pendingLgpdTutorial(bool hasPendingLgpdTutorial);
+
+  Future<String?> get savedAppVersion;
+
+  set appVersion(String version);
 }
 
 class AppConfiguration implements IAppConfiguration {
@@ -42,10 +46,12 @@ class AppConfiguration implements IAppConfiguration {
 
   final _tokenKey = 'br.com.jusbrasil.lgpd.tokenServer';
   final _authTokenKey = 'br.com.jusbrasil.lgpd.authToken';
+  @Deprecated('will be removed soon')
   final _isFirstRunKey = 'br.com.jusbrasil.lgpd.isFirstRun';
   final _hasPendingLgpdTutorialKey =
       'br.com.jusbrasil.lgpd.hasPendingLgpdTutorial';
   final _logoutUrlKey = 'br.com.jusbrasil.lgpd.logout';
+  final _appVersionKey = 'br.com.jusbrasil.lgpd.appVersion';
 
   @override
   late Uri apiBaseUri = Uri.parse(kApiBaseUrl);
@@ -64,13 +70,11 @@ class AppConfiguration implements IAppConfiguration {
 
   @override
   Future<bool> get isFirstRun {
-    return _storage.getBool(_isFirstRunKey, true);
+    return _storage.hasKey(_isFirstRunKey).then((value) => !value);
   }
 
   @override
-  set firstRun(bool value) {
-    _storage.setBool(_isFirstRunKey, value);
-  }
+  Future<void> removeFirstRunKey() => _storage.delete(_isFirstRunKey);
 
   @override
   Future<bool> get hasPendingLgpdTutorial {
@@ -90,6 +94,14 @@ class AppConfiguration implements IAppConfiguration {
         : AuthorizationStatus.authenticated;
     _authorizationStatus = status;
     return status;
+  }
+
+  @override
+  Future<String?> get savedAppVersion => _storage.get(_appVersionKey);
+
+  @override
+  set appVersion(String version) {
+    _storage.put(_appVersionKey, version);
   }
 
   @override

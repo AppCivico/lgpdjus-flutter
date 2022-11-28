@@ -50,13 +50,6 @@ abstract class _SplashControllerBase with Store {
 
   void _forwardToMainBoard() {
     AppNavigator.popAndPush(AppRoute('/mainboard'));
-    _appConfiguration.isFirstRun.then((value) {
-      if (value) {
-        AppNavigator.push(AppRoute('/tutorial/welcome')).then((value) {
-          _appConfiguration.firstRun = false;
-        });
-      }
-    });
   }
 
   void _forwardToAuthentication() {

@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:device_info/device_info.dart';
 import 'package:flutter/services.dart';
 import 'package:lgpdjus/app/core/managers/app_configuration.dart';
-import 'package:package_info/package_info.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 @Deprecated("Will be removed soon")
 abstract class IApiServerConfigure {
