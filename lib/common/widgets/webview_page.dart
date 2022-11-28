@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lgpdjus/app/shared/navigation/navigator.dart';
 import 'package:lgpdjus/app/shared/widgets/appbar/appbar.dart';
 import 'package:lgpdjus/core/config.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewPage extends StatelessWidget {
@@ -22,12 +22,10 @@ class WebViewPage extends StatelessWidget {
         initialUrl: Uri.parse(kApiBaseUrl).resolve(url).toString(),
         javascriptMode: JavascriptMode.unrestricted,
         navigationDelegate: (NavigationRequest nav) async {
-          if (nav.url.startsWith('mailto')) {
+          if (nav.url.startsWith('mailto') || nav.url.startsWith('https://')) {
             final url = Uri.parse(nav.url);
-            if (await canLaunchUrl(url)) {
-              launchUrl(url);
-              return NavigationDecision.prevent;
-            }
+            AppNavigator.launchUrl(url);
+            return NavigationDecision.prevent;
           }
           return NavigationDecision.navigate;
         },

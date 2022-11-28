@@ -77,7 +77,10 @@ class DrawerMenuSectionsRepository implements MenuSectionsRepository {
       ),
       MenuItem(
         title: "Termos de Uso",
-        action: NavData("/terms_of_use"),
+        action: NavData('/web', data: {
+          'title': 'Sobre Permissões e Contas',
+          'url': '/web/termos-de-uso',
+        }),
       ),
     ];
   }
