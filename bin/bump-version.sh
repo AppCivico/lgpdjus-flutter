@@ -4,14 +4,14 @@ set -e
 
 PROJECT_DIR=$(dirname $(dirname ${BASH_SOURCE[0]}))
 
-CHANGELOG_PATH="${PROJECT_DIR}/docs/CHANGELOG.md"
+CHANGELOG_PATH="${PROJECT_DIR}/CHANGELOG.md"
 PUBSPEC_PATH="${PROJECT_DIR}/pubspec.yaml"
 ALLOW_COMMIT_CHANGES=false
 
 CHANGED_FILES=()
 
 sedi="sed -i"
-if [ `uname` = 'Darwin' ]; then sedi=sed -i ''; fi
+if [ `uname` = 'Darwin' ]; then sedi="gsed -i"; fi
 
 main() {
     current_version=$(get_current_version)
