@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:lgpdjus/app/shared/navigation/navigator.dart';
 import 'package:lgpdjus/common/widgets/dialog.dart';
 import 'package:lgpdjus/core/di/widget_module.dart';
 import 'package:lgpdjus/features/home/domain/entities.dart';
@@ -25,7 +26,7 @@ class _HomeState extends ModularWidgetState<HomePage, HomeController>
   @override
   void initState() {
     super.initState();
-    _reactionDisposer ??= reaction((_) => controller.dialog, maybeShowDialog);
+    _reactionDisposer ??= reaction((_) => controller.event, _handleEvent);
   }
 
   @override
@@ -50,6 +51,18 @@ class _HomeState extends ModularWidgetState<HomePage, HomeController>
       loading: () => _onLoadingState(),
       loaded: (screen) => _onLoadedState(screen),
       error: (error) => _onErrorState(error),
+    );
+  }
+
+  void _handleEvent(HomeEvent? event) {
+    print(event);
+    event?.when(
+      showTutorial: () {
+        AppNavigator.push(AppRoute('/tutorial/welcome')).then((value) {
+          controller.saveCurrentAppVersion();
+        });
+      },
+      showDialog: maybeShowDialog,
     );
   }
 

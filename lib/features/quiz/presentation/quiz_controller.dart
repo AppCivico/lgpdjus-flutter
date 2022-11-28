@@ -127,10 +127,10 @@ abstract class _QuizControllerBase
 
   void _emitDialogReaction(String message) {
     final dialog = DialogData(
-      "Validar conta",
-      message,
-      NamedAction("Continuar", Runnable(_verifyAccount)),
-      NamedAction("Fazer mais tarde", null),
+      title: "Validar conta",
+      content: message,
+      primaryAction: NamedAction("Continuar", Runnable(_verifyAccount)),
+      secondaryAction: NamedAction("Fazer mais tarde", null),
     );
     reaction = QuizReaction.showDialog(dialog);
   }

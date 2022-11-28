@@ -5,6 +5,8 @@ import 'package:lgpdjus/app/shared/logger/log.dart';
 import 'package:lgpdjus/app/shared/navigation/route.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
 
+export 'package:lgpdjus/app/shared/navigation/route.dart';
+
 typedef bool PopUntilPredicate(String? route);
 
 class AppNavigator {

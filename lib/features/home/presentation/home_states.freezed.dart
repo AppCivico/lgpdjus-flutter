@@ -500,3 +500,328 @@ abstract class _Error implements HomeState {
   @JsonKey(ignore: true)
   _$ErrorCopyWith<_Error> get copyWith => throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+class _$HomeEventTearOff {
+  const _$HomeEventTearOff();
+
+  _ShowTutorial showTutorial() {
+    return const _ShowTutorial();
+  }
+
+  _ShowDialog showDialog(DialogData data) {
+    return _ShowDialog(
+      data,
+    );
+  }
+}
+
+/// @nodoc
+const $HomeEvent = _$HomeEventTearOff();
+
+/// @nodoc
+mixin _$HomeEvent {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() showTutorial,
+    required TResult Function(DialogData data) showDialog,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? showTutorial,
+    TResult Function(DialogData data)? showDialog,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? showTutorial,
+    TResult Function(DialogData data)? showDialog,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ShowTutorial value) showTutorial,
+    required TResult Function(_ShowDialog value) showDialog,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ShowTutorial value)? showTutorial,
+    TResult Function(_ShowDialog value)? showDialog,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ShowTutorial value)? showTutorial,
+    TResult Function(_ShowDialog value)? showDialog,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $HomeEventCopyWith<$Res> {
+  factory $HomeEventCopyWith(HomeEvent value, $Res Function(HomeEvent) then) =
+      _$HomeEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$HomeEventCopyWithImpl<$Res> implements $HomeEventCopyWith<$Res> {
+  _$HomeEventCopyWithImpl(this._value, this._then);
+
+  final HomeEvent _value;
+  // ignore: unused_field
+  final $Res Function(HomeEvent) _then;
+}
+
+/// @nodoc
+abstract class _$ShowTutorialCopyWith<$Res> {
+  factory _$ShowTutorialCopyWith(
+          _ShowTutorial value, $Res Function(_ShowTutorial) then) =
+      __$ShowTutorialCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$ShowTutorialCopyWithImpl<$Res> extends _$HomeEventCopyWithImpl<$Res>
+    implements _$ShowTutorialCopyWith<$Res> {
+  __$ShowTutorialCopyWithImpl(
+      _ShowTutorial _value, $Res Function(_ShowTutorial) _then)
+      : super(_value, (v) => _then(v as _ShowTutorial));
+
+  @override
+  _ShowTutorial get _value => super._value as _ShowTutorial;
+}
+
+/// @nodoc
+
+class _$_ShowTutorial with DiagnosticableTreeMixin implements _ShowTutorial {
+  const _$_ShowTutorial();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'HomeEvent.showTutorial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'HomeEvent.showTutorial'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _ShowTutorial);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() showTutorial,
+    required TResult Function(DialogData data) showDialog,
+  }) {
+    return showTutorial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? showTutorial,
+    TResult Function(DialogData data)? showDialog,
+  }) {
+    return showTutorial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? showTutorial,
+    TResult Function(DialogData data)? showDialog,
+    required TResult orElse(),
+  }) {
+    if (showTutorial != null) {
+      return showTutorial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ShowTutorial value) showTutorial,
+    required TResult Function(_ShowDialog value) showDialog,
+  }) {
+    return showTutorial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ShowTutorial value)? showTutorial,
+    TResult Function(_ShowDialog value)? showDialog,
+  }) {
+    return showTutorial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ShowTutorial value)? showTutorial,
+    TResult Function(_ShowDialog value)? showDialog,
+    required TResult orElse(),
+  }) {
+    if (showTutorial != null) {
+      return showTutorial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ShowTutorial implements HomeEvent {
+  const factory _ShowTutorial() = _$_ShowTutorial;
+}
+
+/// @nodoc
+abstract class _$ShowDialogCopyWith<$Res> {
+  factory _$ShowDialogCopyWith(
+          _ShowDialog value, $Res Function(_ShowDialog) then) =
+      __$ShowDialogCopyWithImpl<$Res>;
+  $Res call({DialogData data});
+}
+
+/// @nodoc
+class __$ShowDialogCopyWithImpl<$Res> extends _$HomeEventCopyWithImpl<$Res>
+    implements _$ShowDialogCopyWith<$Res> {
+  __$ShowDialogCopyWithImpl(
+      _ShowDialog _value, $Res Function(_ShowDialog) _then)
+      : super(_value, (v) => _then(v as _ShowDialog));
+
+  @override
+  _ShowDialog get _value => super._value as _ShowDialog;
+
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_ShowDialog(
+      data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as DialogData,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ShowDialog with DiagnosticableTreeMixin implements _ShowDialog {
+  const _$_ShowDialog(this.data);
+
+  @override
+  final DialogData data;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'HomeEvent.showDialog(data: $data)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'HomeEvent.showDialog'))
+      ..add(DiagnosticsProperty('data', data));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ShowDialog &&
+            (identical(other.data, data) ||
+                const DeepCollectionEquality().equals(other.data, data)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(data);
+
+  @JsonKey(ignore: true)
+  @override
+  _$ShowDialogCopyWith<_ShowDialog> get copyWith =>
+      __$ShowDialogCopyWithImpl<_ShowDialog>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() showTutorial,
+    required TResult Function(DialogData data) showDialog,
+  }) {
+    return showDialog(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? showTutorial,
+    TResult Function(DialogData data)? showDialog,
+  }) {
+    return showDialog?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? showTutorial,
+    TResult Function(DialogData data)? showDialog,
+    required TResult orElse(),
+  }) {
+    if (showDialog != null) {
+      return showDialog(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ShowTutorial value) showTutorial,
+    required TResult Function(_ShowDialog value) showDialog,
+  }) {
+    return showDialog(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ShowTutorial value)? showTutorial,
+    TResult Function(_ShowDialog value)? showDialog,
+  }) {
+    return showDialog?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ShowTutorial value)? showTutorial,
+    TResult Function(_ShowDialog value)? showDialog,
+    required TResult orElse(),
+  }) {
+    if (showDialog != null) {
+      return showDialog(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ShowDialog implements HomeEvent {
+  const factory _ShowDialog(DialogData data) = _$_ShowDialog;
+
+  DialogData get data => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$ShowDialogCopyWith<_ShowDialog> get copyWith =>
+      throw _privateConstructorUsedError;
+}

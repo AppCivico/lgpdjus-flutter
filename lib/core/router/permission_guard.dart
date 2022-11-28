@@ -26,15 +26,15 @@ class PermissionGuard extends RouteGuard with DialogHandler {
 
   Future requestManualPermission() {
     return showAlertDialog(
-      title,
-      description,
-      NamedAction(
+      title: title,
+      content: description,
+      primaryAction: NamedAction(
         'Sim',
         Runnable(() {
           openAppSettings();
         }),
       ),
-      NamedAction('Não', null),
+      secondaryAction: NamedAction('Não', null),
     );
   }
 }

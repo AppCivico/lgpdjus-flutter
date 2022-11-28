@@ -14,10 +14,11 @@ mixin DialogHandler {
   }
 
   void showDialog(DialogData dialog) => showAlertDialog(
-        dialog.title,
-        dialog.content,
-        dialog.primaryAction,
-        dialog.secondaryAction,
+        title: dialog.title,
+        content: dialog.content,
+        primaryAction: dialog.primaryAction,
+        secondaryAction: dialog.secondaryAction,
+        contentAlign: dialog.contentAlign,
       );
 
   void maybeShowDialog(DialogData? dialog) {
@@ -26,12 +27,13 @@ mixin DialogHandler {
     }
   }
 
-  Future showAlertDialog(
-    String title,
-    String content,
-    NamedAction primaryAction, [
+  Future showAlertDialog({
+    required String title,
+    required String content,
+    required NamedAction primaryAction,
     NamedAction? secondaryAction,
-  ]) {
+    TextAlign contentAlign = TextAlign.center,
+  }) {
     return Asuka.showDialog(
       barrierDismissible: false,
       barrierColor: Colors.black38,
@@ -44,7 +46,7 @@ mixin DialogHandler {
             style: themeData.textTheme.headline6
                 ?.copyWith(color: themeData.primaryColor),
           ),
-          content: Text(content, textAlign: TextAlign.center),
+          content: Text(content, textAlign: contentAlign),
           actions: _buildActions(context, primaryAction, secondaryAction),
         );
       },
@@ -97,17 +99,19 @@ mixin DialogHandler {
 }
 
 class DialogData extends Equatable {
-  DialogData(
-    this.title,
-    this.content,
-    this.primaryAction, [
+  DialogData({
+    required this.title,
+    required this.content,
+    required this.primaryAction,
     this.secondaryAction,
-  ]);
+    this.contentAlign = TextAlign.center,
+  });
 
   final String title;
   final String content;
   final NamedAction primaryAction;
   final NamedAction? secondaryAction;
+  final TextAlign contentAlign;
 
   @override
   List<Object?> get props => [title, content, primaryAction, secondaryAction];
