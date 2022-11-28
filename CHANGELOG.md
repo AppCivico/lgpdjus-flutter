@@ -6,18 +6,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2022-11-28
+
 ### Adicionado
 - Integração com gov.br
 - Item de menu "Sobre recursos de acessibilidade"
 - Item de menu "Sobre permissões e contas"
+- Exibição da mensagem de notas da versão
 
 ### Removido
-- Item de menu "Termos de Uso"
 - Rotas de verificação da conta
 
 ## [1.2.3] - 2022-05-23
 
 - Código fonte aberto
 
-[Unreleased]: https://github.com/AppCivico/lgpdjus-flutter/compare/v1.2.3...HEAD
+[Unreleased]: https://github.com/AppCivico/lgpdjus-flutter/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/AppCivico/lgpdjus-flutter/compare/v1.2.3...2.0.0
 [1.2.3]: https://github.com/AppCivico/lgpdjus-flutter/releases/tag/v1.2.3
