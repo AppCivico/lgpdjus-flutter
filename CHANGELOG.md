@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Corrigido
+- Deployment target para iOS 14
+
 ### Removido
 - Dependências no `pubspec.yaml` que não são diretamente utilizadas
 - UseCases que eram utilizados quando havia o fluxo de cadastro
