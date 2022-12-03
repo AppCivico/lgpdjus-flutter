@@ -44,7 +44,7 @@ packages:
     source: hosted
     version: "2.0.1+3"
   async:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: async
       url: "https://pub.dartlang.org"
@@ -309,15 +309,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
-  cpfcnpj:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: "6258774d3de58ee9122f2b6047ebb0c5b833df19"
-      resolved-ref: "6258774d3de58ee9122f2b6047ebb0c5b833df19"
-      url: "https://github.com/erickhaendel/dart-cpfcnpj.git"
-    source: git
-    version: "1.0.3"
   cross_file:
     dependency: "direct main"
     description:
@@ -340,7 +331,7 @@ packages:
     source: hosted
     version: "0.17.2"
   cupertino_icons:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: cupertino_icons
       url: "https://pub.dartlang.org"
@@ -381,13 +372,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
-  email_validator:
-    dependency: "direct main"
-    description:
-      name: email_validator
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.17"
   equatable:
     dependency: "direct main"
     description:
@@ -498,27 +482,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.3.0"
-  flutter_custom_tabs:
-    dependency: "direct main"
-    description:
-      name: flutter_custom_tabs
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.4"
-  flutter_custom_tabs_platform_interface:
-    dependency: transitive
-    description:
-      name: flutter_custom_tabs_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.1"
-  flutter_custom_tabs_web:
-    dependency: transitive
-    description:
-      name: flutter_custom_tabs_web
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
   flutter_launcher_icons:
     dependency: "direct dev"
     description:
@@ -575,13 +538,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.22.0"
-  flutter_tags:
-    dependency: "direct main"
-    description:
-      name: flutter_tags
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0-nullsafety.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -922,7 +878,7 @@ packages:
     source: hosted
     version: "1.0.5"
   path:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: path
       url: "https://pub.dartlang.org"
@@ -943,7 +899,7 @@ packages:
     source: hosted
     version: "0.2.1"
   path_provider:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: path_provider
       url: "https://pub.dartlang.org"
@@ -1047,15 +1003,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.2.4"
-  progress_state_button:
-    dependency: "direct main"
-    description:
-      name: progress_state_button
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.4"
   provider:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: provider
       url: "https://pub.dartlang.org"
@@ -1375,7 +1324,7 @@ packages:
     source: hosted
     version: "3.0.1"
   uuid:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: uuid
       url: "https://pub.dartlang.org"

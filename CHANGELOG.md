@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Removido
+- Dependências no `pubspec.yaml` que não são diretamente utilizadas
+- UseCases que eram utilizados quando havia o fluxo de cadastro
+
 ## [2.0.0] - 2022-11-28
 
 ### Adicionado
