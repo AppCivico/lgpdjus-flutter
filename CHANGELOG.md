@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Modificado
+- Pequenas alterações dos textos da tela de login
+
 ### Corrigido
 - Deployment target para iOS 14
 
