@@ -9,8 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Modificado
 - Pequenas alterações dos textos da tela de login
 
+### Adicionado
+- Loading que indica o carregamento do conteúdo na WebView
+
 ### Corrigido
 - Deployment target para iOS 14
+- WebView no iOS que ao carregar abria o navegador
 
 ### Removido
 - Dependências no `pubspec.yaml` que não são diretamente utilizadas
