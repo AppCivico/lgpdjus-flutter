@@ -76,7 +76,7 @@ class _SignInPageState extends ModularState<SignInPage, SignInController>
                       child: RichText(
                         text: TextSpan(
                           text: 'Abertura e acompanhamento de solicitações '
-                              'referente a nova legislação de '
+                              'referente a legislação de '
                               'proteção de dados pessoais aplicada ao '
                               'Tribunal de Justiça de Santa Catarina.',
                           style: Theme.of(context).textTheme.bodyText2,
@@ -102,7 +102,7 @@ class _SignInPageState extends ModularState<SignInPage, SignInController>
                               text: 'Ao entrar, você concorda com nosso\n',
                             ),
                             TextSpan(
-                              text: 'termo de privacidade',
+                              text: 'Termo de Privacidade',
                               style: kTextStyleFeedTweetShowReply,
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
