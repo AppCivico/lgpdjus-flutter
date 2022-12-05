@@ -38,6 +38,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Código fonte aberto
 
 [Unreleased]: https://github.com/AppCivico/lgpdjus-flutter/compare/v2.0.1...HEAD
-[2.0.1]: https://github.com/AppCivico/lgpdjus-flutter/compare/v2.0.0...2.0.1
-[2.0.0]: https://github.com/AppCivico/lgpdjus-flutter/compare/v1.2.3...2.0.0
+[2.0.1]: https://github.com/AppCivico/lgpdjus-flutter/compare/v2.0.0...v2.0.1
+[2.0.0]: https://github.com/AppCivico/lgpdjus-flutter/compare/v1.2.3...v2.0.0
 [1.2.3]: https://github.com/AppCivico/lgpdjus-flutter/releases/tag/v1.2.3
