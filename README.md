@@ -1,16 +1,42 @@
 # LGPDjus
 
-A new Flutter project.
+<div>
+    <a href='https://play.google.com/store/apps/details?id=br.com.jusbrasil.lgpd&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Disponível no Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/pt-br_badge_web_generic.png' style="height: 50px"/></a> <a href="https://apps.apple.com/us/app/lgpdjus/id1576563624?itsct=apps_box_badge&amp;itscg=30200"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/pt-br?size=250x83&amp;releaseDate=1627171200?h=cffe6c4b48ab6dc75dbc0f04b34de8c2" alt="Download on the App Store" style="height: 39px; margin-bottom: 5.5px"></a>
+</div>
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+O aplicativo LGPDJus permite abertura e acompanhamento de solicitações referentes a nova legislação de proteção de dados pessoais (LGPD) referente ao Tribunal de Justiça de Santa de Catarina.
 
-A few resources to get you started if this is your first Flutter project:
+## Requisitos
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- SDK Flutter 2.10 ou [FVM](https://fvm.app/)
+- XCode >= 13.1
+- Android SDK (com a variável de ambiente `ANDROID_SDK_ROOT` definida)
+- [Firebase CLI](https://firebase.google.com/docs/cli) (autenticar usando `firebase login`)
+- Make
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Instalação
+
+Instalar as dependências
+```bash
+flutter pub get
+# ou caso esteja utilizando FVM
+fvm flutter pub get
+```
+
+Copiar arquivo de váriaveis de ambiente
+```bash
+cp .env.default .env # substitua os valores que forem necessários no arquivo .env
+```
+
+Baixa arquivos de configuração do Firebase
+```bash
+make setup_google_services
+```
+
+## Execução
+
+```bash
+make run
+```
