@@ -6,6 +6,11 @@ PROJECT_DIR=$(dirname $(dirname ${BASH_SOURCE[0]}))
 
 PATH=$PATH:$HOME/.local/bin
 
+FLUTTER_CMD=flutter
+if command -v fvm &> /dev/null; then
+    FLUTTER_CMD="fvm flutter"
+fi
+
 main() {
     check_args
     install_deps
@@ -22,9 +27,6 @@ install_deps() {
         echo "Signing to Firebase CLI..."
         firebase login
     fi
-    if ! command -v flutterfire &> /dev/null; then
-        dart pub global activate flutterfire_cli
-    fi
 }
 
 # Creating files:
@@ -35,7 +37,7 @@ configure() {
         FIREBASE_TOKEN_ARG="--token $FIREBASE_TOKEN"
     fi
 
-    flutterfire configure -y \
+    $FLUTTER_CMD pub run flutterfire_cli:flutterfire configure -y \
         --project=$FIREBASE_PROJECT_ID \
         --out=lib/firebase_options.dart \
         --ios-bundle-id=$IOS_BUNDLE_ID \
